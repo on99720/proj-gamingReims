@@ -143,7 +143,7 @@ HTML
 
     echo $p->toHTML();
 }
-//TODO redirect vers une page
+
 else
 {
     header("Location: redirect.php");

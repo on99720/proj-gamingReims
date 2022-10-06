@@ -71,7 +71,7 @@ SQL
     $stmt->execute(['id' => (int)$idmax[0][0] + 1]);
     $_SESSION["InfosUser"]["ID"] = (int)$idmax[0][0] + 1;
 
-
+//todo random du premier QCM
     $p->appendContent(<<<HTML
         <h1>Bienvenue</h1>
         <h2>Merci de participer a ce magnifique jeu concours au travers de la game'in Reims.</h2>
@@ -80,6 +80,7 @@ SQL
         </p>
         <img src="img/kisspng-computer-icons-google-maps-location-5b1d56b8dcf122.249317311528649400905.jpg" width="428">
         <form action="THE_VOID.php">
+        
         <button type = "submit">[WIP] Index</button>
         </form>
 

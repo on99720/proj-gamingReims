@@ -74,4 +74,5 @@ $p->appendContent(<<<HTML
  </div>
 HTML
 );
+// TODO Random prochain QCM
 echo $p->toHTML();
