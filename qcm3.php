@@ -5,7 +5,7 @@ Session::start();
 
 if(!isset($_SESSION["InfosUser"]["ID"]))
 {
-    http_redirect("findme.php");
+    header("Location: findme.php");
 }
 
 if($_SESSION["InfosUser"]["CheckQCM3"]==false) {

@@ -4,11 +4,18 @@ require_once ('autoload.php');
 Session::start();
 
 $totalCorrect = 0;
-$lastQCM = $_SESSION["InfosUser"]["QCMFini"][count($_SESSION["InfosUser"]["QCMFini"])-1] ;
-if($_SESSION["InfosUser"]["CheckQCM4"]&& $lastQCM[0]!=4)
+try {
+
+
+    $lastQCM = $_SESSION["InfosUser"]["QCMFini"][count($_SESSION["InfosUser"]["QCMFini"]) - 1];
+    if ($_SESSION["InfosUser"]["CheckQCM4"] && $lastQCM[0] != 4) {
+        $last = $_SESSION["InfosUser"]["numQCM"] - 1;
+        header("Location: redirect.php");
+    }
+}
+catch (Exception $e)
 {
-    $last = $_SESSION["InfosUser"]["numQCM"]-1;
-    header("Location: redirect.php");
+
 }
 
 
