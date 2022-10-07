@@ -76,6 +76,56 @@ $p->appendContent(<<<HTML
  </div>
 HTML
 );
+$p->appendToHead(<<<HTML
+<meta http-equiv="Refresh"/>
+HTML
+);
+$p->appendContent(<<<HTML
+<h1 style="text-align: center;">Scanner le Qr Code du prochain stand</h1>
+<hr>
+
+<script src="js/html5-qrcode.min.js"></script>
+<style>
+  .result{
+    background-color: green;
+    color:#fff;
+    padding:20px;
+  }
+  .row{
+    display:flex;
+}
+</style>
+
+
+<div class="row" style="text-align: center">
+  <div class="col" style="text-align: center">
+    <div style="width:500px;" id="reader" style="text-align: center"></div>
+  </div>
+  <div class="col" style="padding:30px;" style="text-align: center">
+    <div id="result" style="text-align: center"></div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+function onScanSuccess(qrCodeMessage) {
+//    document.getElementById('result').innerHTML = '<p>Vers <a href='+qrCodeMessage+' >stand 2</a>.</p>';
+    document.getElementById('result').innerHTML = '<meta http-equiv="refresh" content="0; URL='+qrCodeMessage+'">';
+}
+
+function onScanError(errorMessage) {
+    //handle scan error
+}
+
+var html5QrcodeScanner = new Html5QrcodeScanner(
+    "reader", { fps: 10, qrbox: 250 });
+html5QrcodeScanner.render(onScanSuccess, onScanError);
+
+</script>
+HTML
+
+);
+
 if($_SESSION["InfosUser"]["CheckQCM1"]&&$_SESSION["InfosUser"]["CheckQCM2"]&&$_SESSION["InfosUser"]["CheckQCM3"]&&$_SESSION["InfosUser"]["CheckQCM4"]&&$_SESSION["InfosUser"]["CheckQCM5"])
 {header("Location: resultfinal.php");}
 // TODO Random prochain QCM

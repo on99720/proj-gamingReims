@@ -209,6 +209,7 @@ HTML
     );
 
 
+
     echo $p->toHTML();
 }
 
@@ -217,12 +218,9 @@ else
     header("Location: redirect.php");
 
 }
+
 /*
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Refresh"/>
-</head>
+
 <h1 style="text-align: center;">Scanner le Qr Code du prochain stand</h1>
 <hr>
 
