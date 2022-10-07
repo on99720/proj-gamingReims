@@ -11,19 +11,19 @@ if(count($_SESSION["InfosUser"]["QCMFini"])>0) {
     }
 }
 
-$answer1 = $_POST['question-1-answers'] ?? "Non";
+$answer1 = $_POST['question-1-answers'] ?? false;
 
-$answer2 = $_POST['question-2-answers'] ?? "Non";
+$answer2 = $_POST['question-2-answers'] ?? false;
 
-$answer3 = $_POST['question-3-answers'] ?? "Non";
+$answer3 = $_POST['question-3-answers'] ?? false;
 
-$answer4 = $_POST['question-4-answers'] ?? "Non";
+$answer4 = $_POST['question-4-answers'] ?? false;
 
 
-if ($answer1 == "C") { $totalCorrect++; }
-if ($answer2 == "D") { $totalCorrect++; }
-if ($answer3 == "A") { $totalCorrect++; }
-if ($answer4 == "B") { $totalCorrect++; }
+if ($answer1) { $totalCorrect++; }
+if ($answer2) { $totalCorrect++; }
+if ($answer3) { $totalCorrect++; }
+if ($answer4) { $totalCorrect++; }
 
 if(!$_SESSION["InfosUser"]["CheckQCM1"])
 {
