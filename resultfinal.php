@@ -3,8 +3,8 @@
 require_once ('autoload.php');
 Session::start();
 
-if(isset($_COOKIE["TotalPoints"])){
-    $totalCorrect = intval($_COOKIE["TotalPoints"]);
+if(isset($_SESSION["InfosUser"]["Score"])){
+    $totalCorrect = $_SESSION["InfosUser"]["Score"];
 }else{
     $totalCorrect = 0; //PAS DE RESULTATS
 }
