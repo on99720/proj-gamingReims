@@ -8,6 +8,10 @@ $title = 'C\'est la fin';
 $p = new WebPage($title);
 
 $p->appendContent(<<<HTML
+  <div>
+    <a href="index.php">Lieu de l'EPSI QRcode</a>
+  </div>
+  
   <div id="redirects">
   <li>
     <a href="qcm1.php">Go to QRcode1</a>
