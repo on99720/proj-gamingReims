@@ -3,10 +3,15 @@
 require_once('autoload.php');
 
 Session::start();
-$lastQCM = $_SESSION["InfosUser"]["QCMFini"][count($_SESSION["InfosUser"]["QCMFini"])-1];
-
-echo $_SESSION["InfosUser"]["numQCM"]-1;
-echo $lastQCM[0];
+if(count($_SESSION["InfosUser"]["QCMFini"])-1>0) {
+    $lastQCM = $_SESSION["InfosUser"]["QCMFini"][count($_SESSION["InfosUser"]["QCMFini"]) - 1];
+}
+else
+{
+    $lastQCM = 1;
+}
+var_dump($_SESSION["InfosUser"]["QCMFini"]);
+//var_dump();
 $redirect = "oui";
 
 switch ($lastQCM[0]){

@@ -6,7 +6,7 @@ Session::start();
 $totalCorrect = 0;
 if(count($_SESSION["InfosUser"]["QCMFini"])>0) {
     $lastQCM = $_SESSION["InfosUser"]["QCMFini"][count($_SESSION["InfosUser"]["QCMFini"]) - 1];
-    if ($_SESSION["InfosUser"]["CheckQCM1"] && $lastQCM) {
+    if ($_SESSION["InfosUser"]["CheckQCM1"] && $lastQCM[0]!=1) {
         header("Location: redirect.php");
     }
 }
@@ -29,8 +29,8 @@ if(!$_SESSION["InfosUser"]["CheckQCM1"])
 {
     $_SESSION["InfosUser"]["Score"] += $totalCorrect;
     $_SESSION["InfosUser"]["CheckQCM1"] = true;
-    $_SESSION["InfosUser"]["QCMFini"] += [1];
-    $_SESSION["InfosUser"]["numQCM"] +=1;
+    $_SESSION["InfosUser"]["QCMFini"][] = [1];
+    $_SESSION["InfosUser"]["numQCM"] = count($_SESSION["InfosUser"]["QCMFini"]);
 }
 
 $title = 'QCM points';
