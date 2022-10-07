@@ -6,8 +6,9 @@ Session::start();
 //Ce formulaire est remplie par l'utilisateur à la fin des QCM
 
 $req = MyPDO::getInstance()->prepare(<<<SQL
-INSERT into Utilisateur (id,nom,pnom,mail,score,nivEtude)
-VALUES (:id,:nom,:pnom,:mail,:score,:nivetude)
+update Utilisateur 
+set nom = :nom,pnom=:pnom,mail=:mail,score=:score,nivEtude=:nivetude
+where id = :id
 SQL
 
 );
@@ -20,5 +21,5 @@ $req->execute([
     'nivetude'=>$_POST['nivetude']
 ]);
 
-
+header("Location: endpage.php");
 

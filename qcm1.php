@@ -14,6 +14,26 @@ if($_SESSION["InfosUser"]["CheckQCM1"]==false) {
     $title = "Bienvenue au QCM n°{$num}";
     $p = new WebPage($title);
 
+    $stmt = MyPDO::getInstance()->prepare(<<<SQL
+SELECT intitule
+FROM QUESTION
+SQL
+
+);
+    $stmt->execute();
+    $quest = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $questQCM = array_rand($quest,4);
+$quest1 = $quest[$questQCM[0]]["intitule"];
+    $quest2 = $quest[$questQCM[1]]["intitule"];
+    $quest3 = $quest[$questQCM[2]]["intitule"];
+    $quest4 = $quest[$questQCM[3]]["intitule"];
+    if(!isset($_SESSION["InfosUser"]["QCM1Q1"])) {
+        $_SESSION["InfosUser"]["QCM1Q1"] = $quest1;
+        $_SESSION["InfosUser"]["QCM1Q2"] = $quest2;
+        $_SESSION["InfosUser"]["QCM1Q3"] = $quest3;
+        $_SESSION["InfosUser"]["QCM1Q4"] = $quest4;
+    }
     $p->appendContent(<<<HTML
  
  <div id="page-wrap">
@@ -26,7 +46,7 @@ if($_SESSION["InfosUser"]["CheckQCM1"]==false) {
             
                 <li>
                 
-                    <h3>WordPress is a...</h3>
+                    <h3>{$_SESSION["InfosUser"]["QCM1Q1"]}</h3>
                     
                     <div>
                         <input type="radio" name="question-1-answers" id="question-1-answers-A" value="A" />
@@ -52,7 +72,7 @@ if($_SESSION["InfosUser"]["CheckQCM1"]==false) {
                 
                 <li>
                 
-                    <h3>SEO is Part Of...</h3>
+                    <h3>{$_SESSION["InfosUser"]["QCM1Q2"]}</h3>
                     
                     <div>
                         <input type="radio" name="question-2-answers" id="question-2-answers-A" value="A" />
@@ -78,7 +98,7 @@ if($_SESSION["InfosUser"]["CheckQCM1"]==false) {
                 
                 <li>
                 
-                    <h3>PHP is a....</h3>
+                    <h3>{$_SESSION["InfosUser"]["QCM1Q3"]}</h3>
                     
                     <div>
                         <input type="radio" name="question-3-answers" id="question-3-answers-A" value="A" />
@@ -104,7 +124,7 @@ if($_SESSION["InfosUser"]["CheckQCM1"]==false) {
                 
                 <li>
                 
-                    <h3>Localhost IP is..</h3>
+                    <h3>{$_SESSION["InfosUser"]["QCM1Q4"]}</h3>
                     
                     <div>
                         <input type="radio" name="question-4-answers" id="question-4-answers-A" value="A" />
