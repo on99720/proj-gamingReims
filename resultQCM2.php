@@ -9,21 +9,21 @@ if(count($_SESSION["InfosUser"]["QCMFini"])>0) {
         header("Location: redirect.php");
     }
 }
-$answer1 = $_POST['question-1-answers'] ?? "Non";
+$answer1 = $_POST['question-1-answers'] ?? false;
 
-$answer2 = $_POST['question-2-answers'] ?? "Non";
+$answer2 = $_POST['question-2-answers'] ?? false;
 
-$answer3 = $_POST['question-3-answers'] ?? "Non";
+$answer3 = $_POST['question-3-answers'] ?? false;
 
-$answer4 = $_POST['question-4-answers'] ?? "Non";
+$answer4 = $_POST['question-4-answers'] ?? false;
 
 
 $totalCorrect = 0;
 
-if ($answer1 == "C") { $totalCorrect++; }
-if ($answer2 == "D") { $totalCorrect++; }
-if ($answer3 == "A") { $totalCorrect++; }
-if ($answer4 == "B") { $totalCorrect++; }
+if ($answer1) { $totalCorrect++; }
+if ($answer2) { $totalCorrect++; }
+if ($answer3) { $totalCorrect++; }
+if ($answer4) { $totalCorrect++; }
 
 
 
@@ -39,20 +39,6 @@ if(!$_SESSION["InfosUser"]["CheckQCM2"])
     $_SESSION["InfosUser"]["QCMFini"][] = [2];
     $_SESSION["InfosUser"]["numQCM"] = count($_SESSION["InfosUser"]["QCMFini"]);
 }
-
-
-
-//base de données, doit remplacer les cookies
-if (!isset($_COOKIE["Validator_QCM2"]) )
-{
-    if(!isset($_COOKIE["TotalPoints"]))
-    { $_COOKIE["TotalPoints"] = "";}
-
-    $totalPoint = intval($_COOKIE["TotalPoints"]);
-    $totalPoint += $totalCorrect;
-    setcookie("TotalPoints", strval($totalPoint));
-}
-setcookie("Validator_QCM2", "oui");
 
 
 $p->appendContent(<<<HTML

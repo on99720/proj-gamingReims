@@ -14,7 +14,7 @@ if($_SESSION["InfosUser"]["CheckQCM3"]==false) {
     $title = "Bienvenue au QCM n°{$num}";
     $p = new WebPage($title);
     $stmt = MyPDO::getInstance()->prepare(<<<SQL
-SELECT intitule
+SELECT intitule,id
 FROM QUESTION
 SQL
 
@@ -27,12 +27,60 @@ SQL
     $quest2 = $quest[$questQCM[1]]["intitule"];
     $quest3 = $quest[$questQCM[2]]["intitule"];
     $quest4 = $quest[$questQCM[3]]["intitule"];
-    if(!isset($_SESSION["InfosUser"]["QCM1Q1"])) {
+    if(!isset($_SESSION["InfosUser"]["QCM3Q1"])) {
+        $_SESSION["InfosUser"]["QCM3ID1"] = $quest[$questQCM[0]]["id"];
+        $_SESSION["InfosUser"]["QCM3ID2"] = $quest[$questQCM[1]]["id"];
+        $_SESSION["InfosUser"]["QCM3ID3"] = $quest[$questQCM[2]]["id"];
+        $_SESSION["InfosUser"]["QCM3ID4"] = $quest[$questQCM[3]]["id"];
         $_SESSION["InfosUser"]["QCM3Q1"] = $quest1;
         $_SESSION["InfosUser"]["QCM3Q2"] = $quest2;
         $_SESSION["InfosUser"]["QCM3Q3"] = $quest3;
         $_SESSION["InfosUser"]["QCM3Q4"] = $quest4;
     }
+    $stmt1 = MyPDO::getInstance()->prepare(<<<SQL
+Select intitule,VoF
+from reponse
+where idQuestion = :id
+SQL
+
+    );
+    $stmt1->bindParam('id',$_SESSION["InfosUser"]["QCM3ID1"]);
+    $stmt1->execute();
+    $repQ1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmt2 = MyPDO::getInstance()->prepare(<<<SQL
+Select intitule,VoF
+from reponse
+where idQuestion = :id
+SQL
+
+    );
+    $stmt2->bindParam('id',$_SESSION["InfosUser"]["QCM3ID2"]);
+    $stmt2->execute();
+    $repQ2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+
+    $stmt3 = MyPDO::getInstance()->prepare(<<<SQL
+Select intitule,VoF
+from reponse
+where idQuestion = :id
+SQL
+
+    );
+    $stmt3->bindParam('id',$_SESSION["InfosUser"]["QCM3ID3"]);
+    $stmt3->execute();
+    $repQ3 = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmt4 = MyPDO::getInstance()->prepare(<<<SQL
+Select intitule,VoF
+from reponse
+where idQuestion = :id
+SQL
+
+    );
+    $stmt4->bindParam('id',$_SESSION["InfosUser"]["QCM3ID4"]);
+    $stmt4->execute();
+    $repQ4 = $stmt4->fetchAll(PDO::FETCH_ASSOC);
     $p->appendContent(<<<HTML
  
  <div id="page-wrap">
@@ -48,23 +96,23 @@ SQL
                     <h3>{$_SESSION["InfosUser"]["QCM3Q1"]}</h3>
                     
                     <div>
-                        <input type="radio" name="question-1-answers" id="question-1-answers-A" value="A" />
-                        <label for="question-1-answers-A">A) Software </label>
+                        <input type="radio" name="question-1-answers" id="question-1-answers-A" value="{$repQ1[0]["VoF"]}" />
+                        <label for="question-1-answers-A">{$repQ1[0]["intitule"]}</label>
                     </div>
                     
                     <div>
-                        <input type="radio" name="question-1-answers" id="question-1-answers-B" value="B" />
-                        <label for="question-1-answers-B">B) Web App</label>
+                        <input type="radio" name="question-1-answers" id="question-1-answers-B" value="{$repQ1[1]["VoF"]}" />
+                        <label for="question-1-answers-B">{$repQ1[1]["intitule"]}</label>
                     </div>
                     
                     <div>
-                        <input type="radio" name="question-1-answers" id="question-1-answers-C" value="C" />
-                        <label for="question-1-answers-C">C) CMS</label>
+                        <input type="radio" name="question-1-answers" id="question-1-answers-C" value="{$repQ1[2]["VoF"]}" />
+                        <label for="question-1-answers-C">{$repQ1[2]["intitule"]}</label>
                     </div>
                     
                     <div>
-                        <input type="radio" name="question-1-answers" id="question-1-answers-D" value="D" />
-                        <label for="question-1-answers-D">D) Other</label>
+                        <input type="radio" name="question-1-answers" id="question-1-answers-D" value="{$repQ1[3]["VoF"]}" />
+                        <label for="question-1-answers-D">{$repQ1[3]["intitule"]}</label>
                     </div>
                 
                 </li>
@@ -74,23 +122,23 @@ SQL
                     <h3>{$_SESSION["InfosUser"]["QCM3Q2"]}</h3>
                     
                     <div>
-                        <input type="radio" name="question-2-answers" id="question-2-answers-A" value="A" />
-                        <label for="question-2-answers-A">A) Video Editing</label>
+                        <input type="radio" name="question-2-answers" id="question-2-answers-A" value="{$repQ2[0]["VoF"]}" />
+                        <label for="question-2-answers-A">{$repQ2[0]["intitule"]}</label>
                     </div>
                     
                     <div>
-                        <input type="radio" name="question-2-answers" id="question-2-answers-B" value="B" />
-                        <label for="question-2-answers-B">B) Graphic Designing</label>
+                        <input type="radio" name="question-2-answers" id="question-2-answers-B" value="{$repQ2[1]["VoF"]}" />
+                        <label for="question-2-answers-B">{$repQ2[1]["intitule"]}</label>
                     </div>
                     
                     <div>
-                        <input type="radio" name="question-2-answers" id="question-2-answers-C" value="C" />
-                        <label for="question-2-answers-C">C) Web Designing</label>
+                        <input type="radio" name="question-2-answers" id="question-2-answers-C" value="{$repQ2[2]["VoF"]}" />
+                        <label for="question-2-answers-C">{$repQ2[2]["intitule"]}</label>
                     </div>
                     
                     <div>
-                        <input type="radio" name="question-2-answers" id="question-2-answers-D" value="D" />
-                        <label for="question-2-answers-D">D) Digital Marketing</label>
+                        <input type="radio" name="question-2-answers" id="question-2-answers-D" value="{$repQ2[3]["VoF"]}" />
+                        <label for="question-2-answers-D">{$repQ2[3]["intitule"]}</label>
                     </div>
                 
                 </li>
@@ -100,23 +148,23 @@ SQL
                     <h3>{$_SESSION["InfosUser"]["QCM3Q3"]}</h3>
                     
                     <div>
-                        <input type="radio" name="question-3-answers" id="question-3-answers-A" value="A" />
-                        <label for="question-3-answers-A">A) Server Side Script</label>
+                        <input type="radio" name="question-3-answers" id="question-3-answers-A" value="{$repQ3[0]["VoF"]}" />
+                        <label for="question-3-answers-A">{$repQ3[0]["intitule"]}</label>
                     </div>
                     
                     <div>
-                        <input type="radio" name="question-3-answers" id="question-3-answers-B" value="B" />
-                        <label for="question-3-answers-B">B) Programming Language</label>
+                        <input type="radio" name="question-3-answers" id="question-3-answers-B" value="{$repQ3[1]["VoF"]}" />
+                        <label for="question-3-answers-B">{$repQ3[1]["intitule"]}</label>
                     </div>
                     
                     <div>
-                        <input type="radio" name="question-3-answers" id="question-3-answers-C" value="C" />
-                        <label for="question-3-answers-C">C) Markup Language</label>
+                        <input type="radio" name="question-3-answers" id="question-3-answers-C" value="{$repQ3[2]["VoF"]}" />
+                        <label for="question-3-answers-C">{$repQ3[2]["intitule"]}</label>
                     </div>
                     
                     <div>
-                        <input type="radio" name="question-3-answers" id="question-3-answers-D" value="D" />
-                        <label for="question-3-answers-D">D) None Of Above These</label>
+                        <input type="radio" name="question-3-answers" id="question-3-answers-D" value="{$repQ3[3]["VoF"]}" />
+                        <label for="question-3-answers-D">{$repQ3[3]["intitule"]}</label>
                     </div>
                 
                 </li>
@@ -126,23 +174,23 @@ SQL
                     <h3>{$_SESSION["InfosUser"]["QCM3Q4"]}</h3>
                     
                     <div>
-                        <input type="radio" name="question-4-answers" id="question-4-answers-A" value="A" />
-                        <label for="question-4-answers-A">A) 192.168.0.1</label>
+                        <input type="radio" name="question-4-answers" id="question-4-answers-A" value="{$repQ4[0]["VoF"]}" />
+                        <label for="question-4-answers-A">{$repQ4[0]["intitule"]}</label>
                     </div>
                     
                     <div>
-                        <input type="radio" name="question-4-answers" id="question-4-answers-B" value="B" />
-                        <label for="question-4-answers-B">B) 127.0.0.0</label>
+                        <input type="radio" name="question-4-answers" id="question-4-answers-B" value="{$repQ4[1]["VoF"]}" />
+                        <label for="question-4-answers-B">{$repQ4[1]["intitule"]}</label>
                     </div>
                     
                     <div>
-                        <input type="radio" name="question-4-answers" id="question-4-answers-C" value="C" />
-                        <label for="question-4-answers-C">C) 1080:80</label>
+                        <input type="radio" name="question-4-answers" id="question-4-answers-C" value="{$repQ4[2]["VoF"]}" />
+                        <label for="question-4-answers-C">{$repQ4[2]["intitule"]}</label>
                     </div>
                     
                     <div>
-                        <input type="radio" name="question-4-answers" id="question-4-answers-D" value="D" />
-                        <label for="question-4-answers-D">D) Any Other</label>
+                        <input type="radio" name="question-4-answers" id="question-4-answers-D" value="{$repQ4[3]["VoF"]}" />
+                        <label for="question-4-answers-D">{$repQ4[3]["intitule"]}</label>
                     </div>
                 
                 </li>
