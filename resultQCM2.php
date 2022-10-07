@@ -55,5 +55,7 @@ $p->appendContent(<<<HTML
  </div>
 HTML
 );
+if($_SESSION["InfosUser"]["CheckQCM1"]&&$_SESSION["InfosUser"]["CheckQCM2"]&&$_SESSION["InfosUser"]["CheckQCM3"]&&$_SESSION["InfosUser"]["CheckQCM4"]&&$_SESSION["InfosUser"]["CheckQCM5"])
+{header("Location: resultfinal.php");}
 // TODO Random prochain QCM
 echo $p->toHTML();
