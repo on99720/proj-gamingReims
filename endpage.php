@@ -9,7 +9,7 @@ $p = new WebPage($title);
 
 $p->appendContent(<<<HTML
 <h1>Merci d'avoir participé</h1>
-<p>Merci de remplir ce formulaire pour tenter de gagner de nombreux lots</p>
+
 
 HTML
 );

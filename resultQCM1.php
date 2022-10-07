@@ -4,12 +4,12 @@ require_once ('autoload.php');
 Session::start();
 
 $totalCorrect = 0;
-$lastQCM = $_SESSION["InfosUser"]["QCMFini"][count($_SESSION["InfosUser"]["QCMFini"])-1];
-if($_SESSION["InfosUser"]["CheckQCM1"]&& $lastQCM)
-{
-    header("Location: redirect.php");
+if(count($_SESSION["InfosUser"]["QCMFini"])>0) {
+    $lastQCM = $_SESSION["InfosUser"]["QCMFini"][count($_SESSION["InfosUser"]["QCMFini"]) - 1];
+    if ($_SESSION["InfosUser"]["CheckQCM1"] && $lastQCM) {
+        header("Location: redirect.php");
+    }
 }
-
 
 $answer1 = $_POST['question-1-answers'] ?? "Non";
 
