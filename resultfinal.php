@@ -1,13 +1,17 @@
 <?php declare(strict_types=1);
 
 require_once ('autoload.php');
-Session::start();
-
-if(isset($_SESSION["InfosUser"]["Score"])){
-    $totalCorrect = $_SESSION["InfosUser"]["Score"];
-}else{
-    $totalCorrect = 0; //PAS DE RESULTATS
+try {
+    Session::start();
+} catch (SessionException $e) {
 }
+
+if(!isset($_SESSION["InfosUser"]["ID"]))
+{
+    header("Location: findme.php");
+}
+
+$totalCorrect = $_SESSION["InfosUser"]["Score"] ?? 0;
 
 $title = 'QCM';
 $p = new WebPage($title);
@@ -56,17 +60,23 @@ $p->appendContent(<<<HTML
        </select>
        <button type = "submit" >Envoyer</button>
    </p>
+   
 </form>
-
+    <div>
+        <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
+    </div>
 
 
 
 HTML
 );
-echo $p->toHTML();
-setcookie("TotalPoints", "0");
-setcookie("Validator_QCM1", "",-1);
-setcookie("Validator_QCM2", "",-1);
-setcookie("Validator_QCM3", "",-1);
-setcookie("Validator_QCM4", "",-1);
-setcookie("Validator_QCM5", "",-1);
+try {
+    echo $p->toHTML();
+} catch (Exception $e) {
+}
+//setcookie("TotalPoints", "0");
+//setcookie("Validator_QCM1", "",-1);
+//setcookie("Validator_QCM2", "",-1);
+//setcookie("Validator_QCM3", "",-1);
+//setcookie("Validator_QCM4", "",-1);
+//setcookie("Validator_QCM5", "",-1);

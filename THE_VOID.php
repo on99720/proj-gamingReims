@@ -1,7 +1,10 @@
 <?php declare(strict_types=1);
 
 require_once ('autoload.php');
-Session::start();
+try {
+    Session::start();
+} catch (SessionException $e) {
+}
 
 $title = 'C\'est la fin';
 
@@ -39,4 +42,7 @@ $p->appendContent(<<<HTML
 
 HTML
 );
- echo $p->toHTML();
+try {
+    echo $p->toHTML();
+} catch (Exception $e) {
+}

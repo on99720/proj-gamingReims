@@ -2,13 +2,18 @@
 //ob_start();
 require_once('autoload.php');
 
-Session::start();
+try {
+    Session::start();
+} catch (SessionException $e) {
+}
+
+
 if(count($_SESSION["InfosUser"]["QCMFini"])-1>0) {
     $lastQCM = $_SESSION["InfosUser"]["QCMFini"][count($_SESSION["InfosUser"]["QCMFini"]) - 1];
 }
 else
 {
-    $lastQCM = 1;
+    $lastQCM[0] = 1;
 }
 var_dump($_SESSION["InfosUser"]["QCMFini"]);
 //var_dump();

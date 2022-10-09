@@ -1,6 +1,9 @@
 <?php declare(strict_types=1);
 require_once "autoload.php";
-Session::start();
+try {
+    Session::start();
+} catch (SessionException $e) {
+}
 
 $title= "Trouve Moi";
 $p = New WebPage($title);
@@ -13,4 +16,7 @@ HTML
 
 
 );
-echo $p->toHTML();
+try {
+    echo $p->toHTML();
+} catch (Exception $e) {
+}
