@@ -1,6 +1,9 @@
 <?php declare(strict_types=1);
 require_once "autoload.php";
-Session::start();
+try {
+    Session::start();
+} catch (SessionException $e) {
+}
 
 $title= "Trouve Moi";
 $p = New WebPage($title);
@@ -52,15 +55,22 @@ function onScanError(errorMessage) {
     //handle scan error
 }
 
-var html5QrcodeScanner = new Html5QrcodeScanner(
-    "reader", { fps: 10, qrbox: 250 });
+let html5QrcodeScanner = new Html5QrcodeScanner("reader", {
+  fps: 15,
+  qrbox: {width: 250, height: 250},
+  rememberLastUsedCamera: false
+});
 html5QrcodeScanner.render(onScanSuccess, onScanError);
 
 </script>
-    <form action="PageMere.php">
-      <button type="submit">RETOUR</button>
-    </form>
+
+<form action="PageMere.php">
+  <button type="submit">RETOUR</button>
+</form>
 HTML
 
 );
-echo $p->toHTML();
+try {
+    echo $p->toHTML();
+} catch (Exception $e) {
+}

@@ -2,9 +2,15 @@
 //ob_start();
 require_once('autoload.php');
 
-Session::start();
+try {
+    Session::start();
+} catch (SessionException $e) {
+}
 session_destroy();
-Session::start();
+try {
+    Session::start();
+} catch (SessionException $e) {
+}
 $title = 'Bienvenue';
 $p = new WebPage($title);
 
@@ -49,27 +55,42 @@ if(!isset($_SESSION["InfosUser"]["QCMFini"]))
 // si le visiteur est nouveau lui creer une session
 if(!isset($_SESSION["InfosUser"]["ID"]) or $_SESSION["InfosUser"]["QCMFini"] == []) {
 
-    $idbd = MyPDO::getInstance()->prepare(<<<SQL
+    try {
+        $idbd = MyPDO::getInstance()->prepare(<<<SQL
 SELECT MAX(id) 
 FROM utilisateur;
 SQL
 
-    );
-    $idbd->execute();
-    $idbd->setFetchMode(PDO::FETCH_NUM);
-    $idmax = $idbd->fetchAll();
+        );
+    } catch (Exception $e) {
+    }
+    if (isset($idbd)) {
+        $idbd->execute();
+        $idbd->setFetchMode(PDO::FETCH_NUM);
+    }
+    if (isset($idbd)) {
+        $idmax = $idbd->fetchAll();
+    }
 
 
-
-    $stmt = MyPDO::getInstance()->prepare(<<<SQL
+    try {
+        $stmt = MyPDO::getInstance()->prepare(<<<SQL
 INSERT INTO utilisateur (id)
 value (:id)
 SQL
 
-    );
+        );
+    } catch (Exception $e) {
+    }
 
-    $stmt->execute(['id' => (int)$idmax[0][0] + 1]);
-    $_SESSION["InfosUser"]["ID"] = (int)$idmax[0][0] + 1;
+    if (isset($stmt)) {
+        if (isset($idmax)) {
+            $stmt->execute(['id' => (int)$idmax[0][0] + 1]);
+        }
+    }
+    if (isset($idmax)) {
+        $_SESSION["InfosUser"]["ID"] = (int)$idmax[0][0] + 1;
+    }
 
 //todo random du premier QCM
     $p->appendContent(<<<HTML
@@ -78,7 +99,7 @@ SQL
         <p>
          [insert règle du jeu]
         </p>
-        <img src="img/kisspng-computer-icons-google-maps-location-5b1d56b8dcf122.249317311528649400905.jpg" width="428">
+        <img src="img/kisspng-computer-icons-google-maps-location-5b1d56b8dcf122.249317311528649400905.jpg" width="900" alt="map">
         <form action="THE_VOID.php">
         
         <button type = "submit">[WIP] Index</button>
@@ -92,5 +113,8 @@ HTML
 else {
     //header("resultQCM{$_SESSION["InfosUser"]["numQCM"]}.php");
 }
-echo $p->toHTML();
+try {
+    echo $p->toHTML();
+} catch (Exception $e) {
+}
 //ob_end_flush();
