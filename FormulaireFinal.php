@@ -7,7 +7,23 @@ try {
 }
 
 
-//Ce formulaire est remplie par l'utilisateur à la fin des QCM
+// Valider changement des entrées
+if ($_POST['mail']=="votre email" Or $_POST['nom']=="votre nom" Or $_POST['nom']=="votre prénom")
+{
+    echo('Il faut un email et un nom pour soumettre le formulaire.');
+    return;
+}
+// Valider taille des entrées
+if (strlen($_POST['nom']) > 17 Or (strlen($_POST['pnom']) > 17))
+{
+    echo('nom ou prénom trop grand');
+    return;
+}
+// Valider l'email
+if(!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
+    echo "L'adresse e-mail n'est pas valide";
+    return;
+}
 
 try {
     $req = MyPDO::getInstance()->prepare(<<<SQL

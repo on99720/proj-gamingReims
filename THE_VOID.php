@@ -39,6 +39,9 @@ $p->appendContent(<<<HTML
   <div>
     <a href="PageMere.php">Page Mère</a>
   </div>
+   <div>
+    <a href="endpage.php">Page de fin</a>
+  </div>
 
 HTML
 );

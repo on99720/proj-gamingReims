@@ -1,0 +1,36 @@
+body
+{
+    font: 14px Georgia, serif;
+
+
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    width: 600px;
+}
+
+.conteneur {
+    width: auto;
+    text-align: center;
+    /*height: 300px;*/
+    border: 2px rgb(117, 117, 117) solid;
+    background-color: #f3dcfc;
+}
+
+.CenterDiv
+{
+    font: 14px Arial, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*text-align: center;*/
+    /*!*display: inline-block;*!*/
+    /*width: auto;*/
+    height: 30px;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    border: 1px rgb(176, 175, 175) solid;
+    background-color: #fae8ff;
+    /*padding: 15px;*/
+
+}
