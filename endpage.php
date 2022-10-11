@@ -16,7 +16,7 @@ $title = 'C\'est la fin';
 $p = new WebPage($title);
 
 $p->appendContent(<<<HTML
-    <h1>Merci d'avoir participé</h1>
+    <h1>Merci d'avoir participé!</h1>
     <div>
         <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
     </div>

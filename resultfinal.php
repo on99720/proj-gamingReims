@@ -33,21 +33,21 @@ HTML
 
 $p->appendContent(<<<HTML
 
-<h4>Bravo! Il reste une étape pour participer au tirage au sort!</h4>
+<h4>Bravo! Plus que l'étape de ton enregistrement pour participer au le tirage au sort!</h4>
 <form method="post" action="FormulaireFinal.php">
    <p>
         <br />
-            <label for="lenom">Nom :   </label>
+            <label for="lenom">Ton nom :   </label>
             <input type="text" name="nom" value="votre nom" id="lenom" />
         <br />
-            <label for="leprenom">Prénom :</label>
+            <label for="leprenom">Ton prénom :</label>
             <input type="text" name="pnom" value="votre prénom" id="leprenom" />
         <br />
-            <label for="lemail">email :  </label>
+            <label for="lemail">Ton e-mail :  </label>
             <input type="text" name="mail" value="votre email" id="lemail" />
         <br />
            <input type="hidden" name="score" id="score" value="{$_SESSION["InfosUser"]["Score"]}">
-           <label for="lenivet">Niveau détude :</label>
+           <label for="lenivet">Ton niveau d'étude :</label>
            <select  name="nivetude" id="lenivet">
                <option value="">--Séléctionnez le niveau d'études</option>
                <option value="Collège">Collège</option>
@@ -59,7 +59,7 @@ $p->appendContent(<<<HTML
                <option value="Doctorat">Bac+8</option>
            </select>
         <br />
-            <button type = "submit" >Envoyer</button>
+            <button type = "submit" >Enregistrer</button>
 
    </p>
    
