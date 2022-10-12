@@ -31,16 +31,20 @@ $p->appendContent(<<<HTML
   <li>
     <a href="qcm5.php">Go to QRcode5</a>
   </li>
-    
+  </div>
+   <br/>
+  <div>
+    <a href="PageMere.php">Page Mère</a>
   </div>
   <div>
     <a href="resultfinal.php">Go to Final Result</a>
   </div>
-  <div>
-    <a href="PageMere.php">Page Mère</a>
-  </div>
    <div>
     <a href="endpage.php">Page de fin</a>
+  </div>
+  <br/>
+  <div>
+    <a href="Geolocalisateur.php">Géolocalisation</a>
   </div>
 
 HTML

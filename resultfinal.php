@@ -59,7 +59,8 @@ $p->appendContent(<<<HTML
                <option value="Doctorat">Bac+8</option>
            </select>
         <br />
-            <button type = "submit" >Enregistrer</button>
+        <br />
+            <button type = "submit" >Enregistrer mes informations</button>
 
    </p>
    

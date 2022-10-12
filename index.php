@@ -6,7 +6,21 @@ try {
     Session::start();
 } catch (SessionException $e) {
 }
-session_destroy();
+if(!isset($_SESSION["InfosUser"]["ID"])) {
+
+    if (!isset($_SESSION["InfosUser"]["VerifGeoloc"])) {
+        header("Location: findme.php");
+        return;
+    } else if (!$_SESSION["InfosUser"]["VerifGeoloc"]) {
+        header("Location: findme.php");
+        return;
+    }
+
+
+    session_destroy();
+}
+
+
 try {
     Session::start();
 } catch (SessionException $e) {
@@ -92,8 +106,9 @@ SQL
         $_SESSION["InfosUser"]["ID"] = (int)$idmax[0][0] + 1;
     }
 
+}
 //todo random du premier QCM
-    $p->appendContent(<<<HTML
+$p->appendContent(<<<HTML
         <h1>Bienvenue</h1>
         <h2>Merci de participer a ce magnifique jeu concours au travers de la game'in Reims.</h2>
         <p>
@@ -106,13 +121,11 @@ SQL
         </form>
 
 HTML
-    );
-}
+);
+
 // Sinon le rediriger sur la derniere page ou il etait
 //TODO
-else {
-    //header("resultQCM{$_SESSION["InfosUser"]["numQCM"]}.php");
-}
+
 try {
     echo $p->toHTML();
 } catch (Exception $e) {
