@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 body {
     color: #222;
-    background: #fff;
+    background: #F2F2F2;
     font: 100% system-ui;
+    margin: 1em;
+    font-family: 'Poppins', serif;
 }
 a {
     color: #0033cc;
@@ -10,7 +14,7 @@ a {
 @media (prefers-color-scheme: dark) {
     body {
         color: #eee;
-        background: #121212;
+        background: #1e1725;
     }
 
     body a {

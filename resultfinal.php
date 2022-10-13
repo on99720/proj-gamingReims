@@ -61,7 +61,7 @@ $p->appendContent(<<<HTML
            </select>
         <br />
         <br />
-            <button type = "submit" >Enregistrer mes informations</button>
+            <button type = "submit" >T'enregistrer</button>
 
    </p>
    
