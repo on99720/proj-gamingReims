@@ -18,6 +18,7 @@ if(count($_SESSION["InfosUser"]["QCMFini"])>0) {
 
 $title = 'QCM points';
 $p = new WebPage($title);
+$p->appendCssUrl("css/DarkTheme.css");
 
 if(!$_SESSION["InfosUser"]["CheckQCM2"])
 {

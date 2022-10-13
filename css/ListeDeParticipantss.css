@@ -1,15 +1,18 @@
+
+
 body
 {
     font: 14px Georgia, serif;
-
-
     margin-left: auto;
     margin-right: auto;
     padding: 15px;
     width: 600px;
+
 }
 
-.conteneur {
+.conteneur
+{
+    color: #531b60;
     width: auto;
     text-align: center;
     /*height: 300px;*/
@@ -19,6 +22,7 @@ body
 
 .CenterDiv
 {
+
     font: 14px Arial, serif;
     display: flex;
     justify-content: center;
@@ -31,6 +35,7 @@ body
     /*margin-right: auto;*/
     border: 1px rgb(176, 175, 175) solid;
     background-color: #fae8ff;
+
     /*padding: 15px;*/
 
 }

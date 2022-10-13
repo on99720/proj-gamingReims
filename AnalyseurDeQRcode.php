@@ -7,6 +7,7 @@ try {
 
 $title= "Trouve Moi";
 $p = New WebPage($title);
+$p->appendCssUrl("css/DarkTheme.css");
 
 $p->appendToHead(<<<HTML
 <meta http-equiv="Refresh"/>

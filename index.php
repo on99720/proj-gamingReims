@@ -108,17 +108,20 @@ SQL
 
 }
 //todo random du premier QCM
+$p->appendCssUrl("css/DarkTheme.css");
 $p->appendContent(<<<HTML
         <h1>Bienvenue</h1>
         <h2>Merci de participer a ce magnifique jeu concours au travers de la game'in Reims.</h2>
         <p>
          [insert règle du jeu]
         </p>
-        <img src="img/kisspng-computer-icons-google-maps-location-5b1d56b8dcf122.249317311528649400905.jpg" width="900" alt="map">
-        <form action="THE_VOID.php">
-        
-        <button type = "submit">[WIP] Index</button>
+        <form action="PageMere.php">
+            <button type = "submit">Continuer</button>
         </form>
+        
+        <div>
+            <a href="THE_VOID.php">Go to THE VOID</a>
+        </div>
 
 HTML
 );

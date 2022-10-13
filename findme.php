@@ -8,6 +8,7 @@ try {
 $title= "Trouve Moi";
 $p = New WebPage($title);
 
+$p->appendCssUrl("css/DarkTheme.css");
 $p->appendContent(<<<HTML
 <h1>Bienvenue</h1>
 <h3>Oh mais tu n'as pas encore commencé ton aventure.</h3>

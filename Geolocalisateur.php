@@ -24,10 +24,10 @@ if(!isset($_SESSION["InfosUser"]["VerifGeoloc"]))
 $title= "Géolocalisation nécessaire";
 $p = New WebPage($title);
 
-
+$p->appendCssUrl("css/DarkTheme.css");
 $p->appendContent(<<<HTML
 
-    <p id="demo">Click sur le boutton pour vérifier votre présence sur le lieu du jeu :</p>
+    <p id="demo">Click sur ce boutton pour vérifier ta présence sur le lieu du jeu.</p>
     <button onclick="getLocation()">Valider ma présence</button>
     
     

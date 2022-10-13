@@ -14,6 +14,7 @@ if(!isset($_SESSION["InfosUser"]["ID"]))
 $title = 'C\'est la fin';
 
 $p = new WebPage($title);
+$p->appendCssUrl("css/DarkTheme.css");
 
 $p->appendContent(<<<HTML
     <h1>Merci d'avoir participé!</h1>
@@ -31,7 +32,8 @@ try {
 
 $points = $_SESSION["InfosUser"]["Score"] ?? 0;
 
-$p->appendCssUrl("css/ListeDeParticipants.css");
+
+$p->appendCssUrl("css/ListeDeParticipantss.css");
 $p->appendContent(<<<HTML
     <br/>
     <br/>

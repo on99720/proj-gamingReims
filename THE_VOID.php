@@ -10,6 +10,7 @@ $title = 'C\'est la fin';
 
 $p = new WebPage($title);
 
+$p->appendCssUrl("css/DarkTheme.css");
 $p->appendContent(<<<HTML
   <div>
     <a href="index.php">Lieu de l'EPSI QRcode</a>

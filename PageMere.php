@@ -13,9 +13,10 @@ if(!isset($_SESSION["InfosUser"]["ID"]))
 $title= "Trouve Moi";
 $p = New WebPage($title);
 
+$p->appendCssUrl("css/DarkTheme.css");
 $p->appendContent(<<<HTML
-    <h4>Trouve et scanne les 5 QR QUIZZ sur le lieu, pour finir ton aventure et gagner le prix par tirage aux sort. </h4>
-    <h4>Une bonne réponse apporte 1 point. Si tu as plus de 3 points, tu seras pris en compte dans le tirage. </h4>
+    <h4>Trouve et scanne les 5 QR QUIZZ cachés sur le lieu, pour finir ton aventure et gagner le prix par tirage aux sort. </h4>
+    <h4>Une bonne réponse à chaque question t'apporte 1 point. Si tu as au moins 5 points à la fin, tu seras pris en compte dans le tirage, si tu as trouvé tous les QUIZZ. </h4>
     <br>
     <div>
         <h4>A la fin des 5 QR QUIZZ, ton nom, ton prénon, et ton mail te seront demandés pour t'enregistrer dans la liste des participants. </h4>
@@ -29,6 +30,12 @@ $p->appendContent(<<<HTML
         </form>
         <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
     </div>
+    <br>
+    <br>
+    <h4>Voici la carte des QR QUIZZ cachés.</h4>
+    <br/>
+        <img src="img/kisspng-computer-icons-google-maps-location-5b1d56b8dcf122.249317311528649400905.jpg" width="900" alt="map">
+    <br/>
     <br>
 HTML
 

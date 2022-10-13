@@ -8,7 +8,7 @@ try {
 
 
 // Valider changement des entrées
-if ($_POST['mail']=="votre email" Or $_POST['nom']=="votre nom" Or $_POST['nom']=="votre prénom")
+if ($_POST['mail']=="" Or $_POST['nom']=="" Or $_POST['nom']=="")
 {
     echo('Il faut un email et un nom pour soumettre le formulaire.');
     return;

@@ -15,6 +15,7 @@ $totalCorrect = $_SESSION["InfosUser"]["Score"] ?? 0;
 
 $title = 'QCM';
 $p = new WebPage($title);
+$p->appendCssUrl("css/DarkTheme.css");
 
 $p->appendContent(<<<HTML
  <div id="page-wrap" >
@@ -38,13 +39,13 @@ $p->appendContent(<<<HTML
    <p>
         <br />
             <label for="lenom">Ton nom :   </label>
-            <input type="text" name="nom" value="votre nom" id="lenom" />
+            <input type="text" name="nom" placeholder="ton nom" size="30" required id="lenom" />
         <br />
             <label for="leprenom">Ton prénom :</label>
-            <input type="text" name="pnom" value="votre prénom" id="leprenom" />
+            <input type="text" name="pnom" placeholder="ton prénom" size="30" required id="leprenom" />
         <br />
             <label for="lemail">Ton e-mail :  </label>
-            <input type="text" name="mail" value="votre email" id="lemail" />
+            <input type="text" name="mail" placeholder="ton@email.com" size="30" required id="lemail" />
         <br />
            <input type="hidden" name="score" id="score" value="{$_SESSION["InfosUser"]["Score"]}">
            <label for="lenivet">Ton niveau d'étude :</label>
