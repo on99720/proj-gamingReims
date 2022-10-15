@@ -91,7 +91,7 @@ SQL
         $stmt4->execute();
         $repQ4 = $stmt4->fetchAll(PDO::FETCH_ASSOC);
         $p->appendCssUrl("css/DarkTheme.css");
-        $p->appendCssUrl("css/style.css");
+        $p->appendCssUrl("css/QCMStyle.css");
         $p->appendContent(<<<HTML
      
      <div id="page-wrap">

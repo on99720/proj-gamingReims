@@ -34,6 +34,9 @@ $p->appendContent(<<<HTML
   </li>
   </div>
    <br/>
+   <div>
+    <a href="ResultCurrent.php">Résultats actuels</a>
+  </div>
   <div>
     <a href="PageMere.php">Page Mère</a>
   </div>

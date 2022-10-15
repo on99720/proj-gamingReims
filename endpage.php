@@ -33,7 +33,7 @@ try {
 $points = $_SESSION["InfosUser"]["Score"] ?? 0;
 
 
-$p->appendCssUrl("css/ListeDeParticipantss.css");
+$p->appendCssUrl("css/ListeDeParticipants.css");
 $p->appendContent(<<<HTML
     <br/>
     <br/>

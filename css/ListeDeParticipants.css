@@ -12,12 +12,11 @@ body
 
 .conteneur
 {
-    color: #531b60;
     width: auto;
     text-align: center;
     /*height: 300px;*/
     border: 2px rgb(117, 117, 117) solid;
-    background-color: #f3dcfc;
+    background-color: #3e2b44;
 }
 
 .CenterDiv
@@ -33,8 +32,8 @@ body
     height: 30px;
     /*margin-left: auto;*/
     /*margin-right: auto;*/
-    border: 1px rgb(176, 175, 175) solid;
-    background-color: #fae8ff;
+    border: 1px rgb(91, 90, 93) solid;
+    background-color: #573b5d;
 
     /*padding: 15px;*/
 

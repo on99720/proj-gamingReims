@@ -56,7 +56,8 @@ $p->appendContent(<<<HTML
               window.location.href = "GeolocalisationTerminer.php";   
           }
            else{
-               x.innerHTML="La position détecté est trop éloigné. Veuillez réessayer";
+               x.innerHTML="La position détecté est trop éloigné ou est invalide. Vérifiez vos parametres d'emplacement, ou utilisez un autre navigateur, comme Google Chrome.<br>"
+               +"<br>Vos coordonées GPS indiquées : <br>"+dlat+"<br>"+dlon+"<br> (Non valide)";
            }
       }
     </script>

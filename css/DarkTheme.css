@@ -1,25 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
+/*definiseur de variable*/
+:root{
+    --BgDarkColor: #1e1725;
+    --BgDarkColorText: #edd5f6;
+}
+
 body {
     color: #222;
     background: #F2F2F2;
     font: 100% system-ui;
     margin: 1em;
     font-family: 'Poppins', serif;
+
 }
 a {
     color: #0033cc;
 }
 
-@media (prefers-color-scheme: dark) {
+button{
+    background: #c9c9c9;
+    border: 5px double #000;
+}
+
+/*Condition du mode dark actif*/
+/*@media (prefers-color-scheme: dark) {*/
     body {
-        color: #eee;
-        background: #1e1725;
+        color: var(--BgDarkColorText);
+        background: var(--BgDarkColor);
+
     }
 
     body a {
         color: #809fff;
     }
-}
+    button, input, select{
+        background: #803e8c;
+        color: #f3dcfc;
+        border: 5px double #000;
+
+    }
+/*}*/
 
 /*@media (prefers-color-scheme: dark) {*/

@@ -55,22 +55,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM2"])
     );
 }
 else{
-    $totalCorrect = $_SESSION["InfosUser"]["Score"];
-    $p->appendContent(<<<HTML
-     <div id="page-wrap">
-     
-     <h1>Resultat total actuel</h1>
-            
-     <div id='results'>$totalCorrect / 20 correct</div>
-       <li>
-        <a href="PageMere.php">Continuer</a>
-       </li> 
-       <li>
-        <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
-       </li> 
-     </div>
-    HTML
-    );
+    header("Location: ResultCurrent.php");
 }
 
 if($_SESSION["InfosUser"]["CheckQCM1"]&&$_SESSION["InfosUser"]["CheckQCM2"]&&$_SESSION["InfosUser"]["CheckQCM3"]&&$_SESSION["InfosUser"]["CheckQCM4"]&&$_SESSION["InfosUser"]["CheckQCM5"])
