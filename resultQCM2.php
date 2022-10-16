@@ -39,7 +39,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM2"])
     $_SESSION["InfosUser"]["numQCM"] = count($_SESSION["InfosUser"]["QCMFini"]);
 
     $p->appendContent(<<<HTML
-     <div id="page-wrap">
+     <div class="corps">
      
      <h1>Result QCM2</h1>
             

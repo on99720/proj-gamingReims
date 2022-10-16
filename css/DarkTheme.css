@@ -23,6 +23,10 @@ button{
     border: 5px double #000;
 }
 
+
+
+
+
 /*Condition du mode dark actif*/
 /*@media (prefers-color-scheme: dark) {*/
     body {
@@ -43,3 +47,26 @@ button{
 /*}*/
 
 /*@media (prefers-color-scheme: dark) {*/
+
+.attention {
+    width: 330px;
+    margin: 0 auto;
+    border-radius: 25px;
+    border: 5px double #98979a;
+    background: #8c3e3e;
+    margin-bottom: 2em;
+    padding: 1em;
+    color: #f3dcfc;
+    text-align: center;
+
+}
+.corps {
+    width: 330px;
+    margin: 0 auto;
+    border-radius: 25px;
+    background: #391b3f;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 1em;
+
+}

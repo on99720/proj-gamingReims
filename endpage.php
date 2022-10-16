@@ -17,10 +17,11 @@ $p = new WebPage($title);
 $p->appendCssUrl("css/DarkTheme.css");
 
 $p->appendContent(<<<HTML
-    <h1>Merci d'avoir participé!</h1>
-    <div>
-        <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
-    </div>
+    <div class="corps">
+        <h1>Merci d'avoir participé!</h1>
+        <div>
+            <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
+        </div>
 HTML
 );
 
@@ -35,10 +36,10 @@ $points = $_SESSION["InfosUser"]["Score"] ?? 0;
 
 $p->appendCssUrl("css/ListeDeParticipants.css");
 $p->appendContent(<<<HTML
-    <br/>
-    <br/>
-    <br/>
-    <div class="conteneur">
+        <br/>
+        <br/>
+        <br/>
+    
         <h2>Votre score</h2>
         <div class="CenterDiv">
             $points Points
@@ -49,12 +50,9 @@ HTML
 
 if (isset($reponse)) {
     $p->appendContent(<<<HTML
-        </div>
         <br/>
         <br/>
         <br/>
-        
-        <div class="conteneur">
         <h2>Score de tous les participants</h2>
 
     HTML

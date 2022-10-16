@@ -10,9 +10,11 @@ $p = New WebPage($title);
 
 $p->appendCssUrl("css/DarkTheme.css");
 $p->appendContent(<<<HTML
-<h1>Bienvenue</h1>
-<h3>Oh mais tu n'as pas encore commencé ton aventure.</h3>
-<h3>Rends toi au stand de l'EPSI pour scanner le geolocalisateur, pour pouvoir commencer ce jeu.</h3>
+<div class="corps">
+    <h1>Bienvenue</h1>
+    <h3>Oh mais tu n'as pas encore commencé ton aventure.</h3>
+    <h3>Rends toi au stand de l'EPSI pour scanner le geolocalisateur, pour pouvoir commencer ce jeu.</h3>
+</div>
 HTML
 
 

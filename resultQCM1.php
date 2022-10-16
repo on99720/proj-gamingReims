@@ -41,7 +41,13 @@ if(!$_SESSION["InfosUser"]["CheckQCM1"])
     $_SESSION["InfosUser"]["numQCM"] = count($_SESSION["InfosUser"]["QCMFini"]);
 
     $p->appendContent(<<<HTML
-     <div id="page-wrap">
+    
+    <div class="attention">
+    NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br>
+    (Votre navigateur peut etre mis en veille, mais sa fermeture entraîne l'effacement totale de vos informations.)
+    </div>
+    
+    <div class="corps">
      
      <h1>Result QCM1</h1>
             
@@ -52,7 +58,8 @@ if(!$_SESSION["InfosUser"]["CheckQCM1"])
        <li>
         <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
        </li> 
-     </div>
+    </div>
+
     HTML
         );
 }

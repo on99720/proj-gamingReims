@@ -27,9 +27,10 @@ $p = New WebPage($title);
 $p->appendCssUrl("css/DarkTheme.css");
 $p->appendContent(<<<HTML
 
-    <p id="demo">Click sur ce boutton pour vérifier ta présence sur le lieu du jeu.</p>
-    <button onclick="getLocation()">Valider ma présence</button>
-    
+    <div class="corps">
+        <p id="demo">Click sur ce boutton pour vérifier ta présence sur le lieu du jeu.</p>
+        <button onclick="getLocation()">Valider ma présence</button>
+    </div>
     
     
     <script>

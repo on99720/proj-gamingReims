@@ -28,7 +28,7 @@ try {
 $title = 'Bienvenue';
 $p = new WebPage($title);
 
-//initialiser toute les données de sessions
+//initialise toute les données de sessions
 if(!isset($_SESSION["InfosUser"]))
 {
     $_SESSION["InfosUser"]= [];
@@ -66,58 +66,47 @@ if(!isset($_SESSION["InfosUser"]["QCMFini"]))
     $_SESSION["InfosUser"]["QCMFini"]= [];
 }
 
-// si le visiteur est nouveau lui creer une session
+// si le visiteur est nouveau, lui creer une session
 if(!isset($_SESSION["InfosUser"]["ID"]) or $_SESSION["InfosUser"]["QCMFini"] == []) {
 
     try {
         $idbd = MyPDO::getInstance()->prepare(<<<SQL
-SELECT MAX(id) 
-FROM utilisateur;
-SQL
-
+            SELECT MAX(id) 
+            FROM utilisateur;
+        SQL
         );
-    } catch (Exception $e) {
-    }
-    if (isset($idbd)) {
         $idbd->execute();
         $idbd->setFetchMode(PDO::FETCH_NUM);
-    }
-    if (isset($idbd)) {
         $idmax = $idbd->fetchAll();
-    }
+        try {
+            $stmt = MyPDO::getInstance()->prepare(<<<SQL
+                INSERT INTO utilisateur (id)
+                value (:id)
+            SQL
+            );
+            $iduser=(int)$idmax[0][0] + 1;
+            $stmt->execute(['id' => $iduser]);
+            $_SESSION["InfosUser"]["ID"] = $iduser;
 
-
-    try {
-        $stmt = MyPDO::getInstance()->prepare(<<<SQL
-INSERT INTO utilisateur (id)
-value (:id)
-SQL
-
-        );
-    } catch (Exception $e) {
-    }
-
-    if (isset($stmt)) {
-        if (isset($idmax)) {
-            $stmt->execute(['id' => (int)$idmax[0][0] + 1]);
-        }
-    }
-    if (isset($idmax)) {
-        $_SESSION["InfosUser"]["ID"] = (int)$idmax[0][0] + 1;
-    }
+        } catch (Exception $e) {}
+    } catch (Exception $e) {}
 
 }
 //todo random du premier QCM
 $p->appendCssUrl("css/DarkTheme.css");
 $p->appendContent(<<<HTML
-        <h1>Bienvenue</h1>
-        <h2>Merci de participer a ce magnifique jeu concours au travers de la game'in Reims.</h2>
-        <p>
-         [insert règle du jeu]
-        </p>
-        <form action="PageMere.php">
-            <button type = "submit">Continuer</button>
-        </form>
+        <div class="attention">
+        NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br>
+        (Votre navigateur peut etre mis en veille, mais sa fermeture entraîne l'effacement totale de vos informations.)
+        </div>
+        
+        <div class="corps">
+            <h1>Bienvenue</h1>
+            <h2>Merci de participer a ce magnifique jeu concours au travers de la game'in Reims.</h2>
+                <form action="PageMere.php">
+                    <button type = "submit">Continuer</button>
+                </form>
+        </div>
         
         <div>
             <a href="THE_VOID.php">Go to THE VOID</a>

@@ -11,17 +11,17 @@ $p->appendCssUrl("css/DarkTheme.css");
 
 $totalCorrect = $_SESSION["InfosUser"]["Score"];
 $p->appendContent(<<<HTML
-     <div id="page-wrap">
+     <div class="corps">
      
-     <h1>Resultat total actuel</h1>
-            
-     <div id='results'>$totalCorrect / 20 correct</div>
-       <li>
-        <a href="PageMere.php">Continuer</a>
-       </li> 
-       <li>
-        <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
-       </li> 
+         <h1>Resultat total actuel</h1>
+                
+         <div id='results'>$totalCorrect / 20 correct</div>
+           <li>
+            <a href="PageMere.php">Continuer</a>
+           </li> 
+           <li>
+            <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
+           </li> 
      </div>
     HTML
 );
