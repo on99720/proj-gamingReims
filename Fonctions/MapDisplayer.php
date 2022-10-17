@@ -3,5 +3,3 @@
 function MapDisplayer() {
     echo "Hello world!";
 }
-
-?>

@@ -79,3 +79,12 @@ button{
     margin-bottom: 2em;
     padding: 1em;
 }
+.MyPopup {
+    width: 330px;
+    margin: 0 auto;
+    border-radius: 25px;
+    background: #4cb718;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 1em;
+}

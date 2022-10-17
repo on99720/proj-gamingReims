@@ -17,7 +17,16 @@ try {
         'com'=>$_POST['commentaire'],
         'src'=>$_POST['source']
     ]);
+
+    $_SESSION["InfosUser"]["alerte"]= "Votre message a bien été envoyé.";
+
+
 } catch (Exception $e) {
+    $_SESSION["InfosUser"]["alerte"]= "Votre message n'a pas pu être envoyé.";
 }
 
+
+
 header("Location: PageMere.php");
+
+

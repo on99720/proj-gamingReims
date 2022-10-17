@@ -10,8 +10,19 @@ if(!isset($_SESSION["InfosUser"]["ID"]))
     header("Location: findme.php");
 }
 
+
+
+
 $title= "Trouve Moi";
 $p = New WebPage($title);
+
+//Popup de message de confirmation
+if (isset($_SESSION["InfosUser"]["alerte"])) {
+    require_once "Fonctions/PopupMaker.php";
+    PopupMaker($p,$_SESSION["InfosUser"]["alerte"]);
+    unset($_SESSION["InfosUser"]["alerte"]);
+
+}
 
 $p->appendCssUrl("css/DarkTheme.css");
 $p->appendContent(<<<HTML
@@ -56,9 +67,8 @@ $p->appendContent(<<<HTML
     </div>
    
 HTML
-
-
 );
+
 try {
     echo $p->toHTML();
 } catch (Exception $e) {
