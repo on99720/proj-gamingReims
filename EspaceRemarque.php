@@ -5,6 +5,13 @@ try {
 } catch (SessionException $e) {
 }
 
+// Valide taille des entrées
+if (strlen($_POST['commentaire']) > 2000 Or (strlen($_POST['pseudo']) > 29) )
+{
+    echo('text ou pseudo trop grand');
+    return;
+}
+
 try {
     $req = MyPDO::getInstance()->prepare(<<<SQL
     insert Remarques
@@ -26,7 +33,10 @@ try {
 }
 
 
-
+if($_POST['source']=="EndPage"){
+    header("Location: endpage.php");
+    return;
+}
 header("Location: PageMere.php");
 
 

@@ -21,7 +21,6 @@ if (isset($_SESSION["InfosUser"]["alerte"])) {
     require_once "Fonctions/PopupMaker.php";
     PopupMaker($p,$_SESSION["InfosUser"]["alerte"]);
     unset($_SESSION["InfosUser"]["alerte"]);
-
 }
 
 $p->appendCssUrl("css/DarkTheme.css");
@@ -60,8 +59,8 @@ $p->appendContent(<<<HTML
         <h4>Une remarques?</h4>
         <form method="POST" action="EspaceRemarque.php">
            <input type="hidden" name="source" id="source" value="PageMere">
-           <input type="text" name="pseudo" placeholder="Un pseudo" size="29" required /><br />
-           <textarea name="commentaire" placeholder="Votre commentaire..." rows="5" cols="35" required></textarea><br />
+           <input type="text" name="pseudo" placeholder="Un pseudo (< 29 lettres)" size="29" required /><br />
+           <textarea name="commentaire" placeholder="Votre commentaire... (< 2000 lettres)" rows="5" cols="35" required></textarea><br />
            <input type="submit" value="Poster ma remarque" name="submit_commentaire" />
         </form>
     </div>
