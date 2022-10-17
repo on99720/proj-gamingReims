@@ -103,7 +103,7 @@ SQL
          
          <h1>$title</h1>
          
-         <form action="resultQCM1.php" method="post" id="quiz">
+         <form action="resultQCM1z.php" method="post" id="quiz">
          
                     <ol>
                     

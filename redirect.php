@@ -21,19 +21,19 @@ $redirect = "oui";
 
 switch ($lastQCM[0]){
     case 1:
-        header("Location: resultQCM1.php");
+        header("Location: resultQCM1z.php");
         break;
     case 2:
-        header("Location: resultQCM2.php");
+        header("Location: resultQCM2a.php");
         break;
     case 3:
-        header("Location: resultQCM3.php");
+        header("Location: resultQCM3r.php");
         break;
     case 4:
-        header("Location: resultQCM4.php");
+        header("Location: resultQCM4t.php");
         break;
     case 5:
-        header("Location: resultQCM5.php");
+        header("Location: resultQCM5p.php");
         break;
 }
 

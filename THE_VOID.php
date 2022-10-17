@@ -19,19 +19,19 @@ $p->appendContent(<<<HTML
     
     <div id="redirects">
     <li>
-    <a href="qcm1.php">Go to QRcode1</a>
+    <a href="qcm1o.php">Go to QRcode1</a>
     </li>   
     <li>
-    <a href="qcm2.php">Go to QRcode2</a>
+    <a href="qcm2u.php">Go to QRcode2</a>
     </li>   
     <li>
-    <a href="qcm3.php">Go to QRcode3</a>
+    <a href="qcm3i.php">Go to QRcode3</a>
     </li>   
     <li>
-    <a href="qcm4.php">Go to QRcode4</a>
+    <a href="qcm4y.php">Go to QRcode4</a>
     </li>   
     <li>
-    <a href="qcm5.php">Go to QRcode5</a>
+    <a href="qcm5m.php">Go to QRcode5</a>
     </li>
     </div>
     <br/>

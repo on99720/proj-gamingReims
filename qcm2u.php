@@ -97,7 +97,7 @@ SQL
      
      <h1>$title</h1>
      
-     <form action="resultQCM2.php" method="post" id="quiz">
+     <form action="resultQCM2a.php" method="post" id="quiz">
      
                 <ol>
                 
