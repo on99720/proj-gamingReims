@@ -29,7 +29,7 @@ NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br
     <br>
     <h4>$totalCorrect / 20 correct </h4>  
     <br>
-    <h4>Bravo! Plus que l'étape de ton enregistrement pour participer au le tirage au sort!</h4>
+    <h4>Bravo! Plus que l'étape de ton enregistrement pour participer au tirage au sort!</h4>
     
     <form method="post" action="FormulaireFinal.php">
        <p>
