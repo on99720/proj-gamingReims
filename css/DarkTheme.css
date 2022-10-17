@@ -38,7 +38,7 @@ button{
     body a {
         color: #809fff;
     }
-    button, input, select{
+    button, input, select,textarea{
         background: #803e8c;
         color: #f3dcfc;
         border: 5px double #000;
@@ -69,4 +69,13 @@ button{
     margin-bottom: 2em;
     padding: 1em;
 
+}
+.EspCommantaire {
+    width: 330px;
+    margin: 0 auto;
+    border-radius: 25px;
+    background: #391b3f;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 1em;
 }

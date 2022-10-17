@@ -45,6 +45,15 @@ $p->appendContent(<<<HTML
         <img src="img/kisspng-computer-icons-google-maps-location-5b1d56b8dcf122.249317311528649400905.jpg" width="900" alt="map">
     <br/>
     <br>
+    <div class="EspCommantaire">
+        <h4>Une remarques?</h4>
+        <form method="POST" action="EspaceRemarque.php">
+           <input type="hidden" name="source" id="source" value="PageMere">
+           <input type="text" name="pseudo" placeholder="Un pseudo" size="29" required /><br />
+           <textarea name="commentaire" placeholder="Votre commentaire..." rows="5" cols="35" required></textarea><br />
+           <input type="submit" value="Poster ma remarque" name="submit_commentaire" />
+        </form>
+    </div>
    
 HTML
 
