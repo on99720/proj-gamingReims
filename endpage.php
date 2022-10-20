@@ -26,9 +26,7 @@ if (isset($_SESSION["InfosUser"]["alerte"])) {
 $p->appendContent(<<<HTML
     <div class="corps">
         <h1>Merci d'avoir participé!</h1>
-        <div>
-            <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
-        </div>
+
 HTML
 );
 
@@ -45,6 +43,7 @@ $p->appendCssUrl("css/ListeDeParticipants.css");
 $p->appendContent(<<<HTML
         <br/>
         <br/>
+        <br/>
     
         <h2>Votre score</h2>
         <div class="CenterDiv">
@@ -57,12 +56,11 @@ HTML
 $p->appendContent(<<<HTML
         <br/>
         <br/>
-        <br/>
         <h4>Une remarques?</h4>
         <form method="POST" action="EspaceRemarque.php">
            <input type="hidden" name="source" id="source" value="EndPage">
-           <input type="text" name="pseudo" placeholder="Un pseudo (< 29 lettres)" size="29" required /><br />
-           <textarea name="commentaire" placeholder="C'était nul à chier ! X) \n Parce que...\n(< 2000 lettres)" rows="5" cols="35" required></textarea><br />
+           <input type="text" name="pseudo" placeholder="Un pseudo au pif (< 29 lettres)" size="29" required /><br />
+           <textarea name="commentaire" placeholder="C'était nul à chier ! X) \n (< 2000 lettres)" rows="5" cols="35" required></textarea><br />
            <input type="submit" value="Poster ma remarque" name="submit_commentaire" />
         </form>
         <br/>
@@ -88,16 +86,26 @@ if (isset($reponse)) {
     for($i = 0; $i < $icount; $i++)
     {
         //echo nl2br ($donnees[$i]['id'] . $donnees[$i]['nom']. "  ");
-        $disp=$donnees[$i]['pnom']." ". $donnees[$i]['nom']." (". $donnees[$i]['score']." Points)"  ;
-        $p->appendContent(<<<HTML
+        $inom = $donnees[$i]['nom'];
+        $ipnom = $donnees[$i]['pnom'];
+
+        if(!($ipnom==null && $inom==null)){
+            $disp = $ipnom . " " . $inom. " (" . $donnees[$i]['score'] . " Points)"  ;
+            $p->appendContent(<<<HTML
                 <div class="CenterDiv">
                     $disp
                 </div>
-        HTML
-        );
+            HTML
+            );
+        }
     }
     $p->appendContent(<<<HTML
-    </div>
+        <br>
+        <br>
+        <br>
+        </div>
+        <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
+
     HTML
     );
 }

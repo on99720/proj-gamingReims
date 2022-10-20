@@ -13,44 +13,47 @@ $p = new WebPage($title);
 $p->appendCssUrl("css/DarkTheme.css");
 $p->appendContent(<<<HTML
 <div class="corps">
-    <div>
-    <a href="index.php">Lieu de l'EPSI QRcode</a>
-    </div>
+    <li>
+        <a href="index.php">Lieu de l'EPSI QRcode</a>
+    </li>
+    <Br>
     
     <div id="redirects">
-    <li>
-    <a href="qcm1o.php">Go to QRcode1</a>
-    </li>   
-    <li>
-    <a href="qcm2u.php">Go to QRcode2</a>
-    </li>   
-    <li>
-    <a href="qcm3i.php">Go to QRcode3</a>
-    </li>   
-    <li>
-    <a href="qcm4y.php">Go to QRcode4</a>
-    </li>   
-    <li>
-    <a href="qcm5m.php">Go to QRcode5</a>
-    </li>
+        <li>
+        <a href="qcmo1.php">Go to QRcode1</a>
+        </li>   
+        <li>
+        <a href="qcmu2.php">Go to QRcode2</a>
+        </li>   
+        <li>
+        <a href="qcmi3.php">Go to QRcode3</a>
+        </li>   
+        <li>
+        <a href="qcmy4.php">Go to QRcode4</a>
+        </li>   
+        <li>
+        <a href="qcmm5.php">Go to QRcode5</a>
+        </li>
     </div>
-    <br/>
-    <div>
+    
+    <Br>
+    <li>
     <a href="ResultCurrent.php">Résultats actuels</a>
-    </div>
-    <div>
+    </li>   
+    <li>
     <a href="PageMere.php">Page Mère</a>
-    </div>
-    <div>
+    </li>   
+    <li>
     <a href="resultfinal.php">Go to Final Result</a>
-    </div>
-    <div>
+    </li>   
+    <li>
     <a href="endpage.php">Page de fin</a>
-    </div>
-    <br/>
-    <div>
+    </li>
+    <Br>
+    
+    <li>
     <a href="Geolocalisateur.php">Géolocalisation</a>
-    </div>
+    </li>
 </div>
 
 HTML

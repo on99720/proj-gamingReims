@@ -6,6 +6,8 @@
     --BgDarkColorText: #edd5f6;
 }
 
+
+
 body {
     color: #222;
     background: #F2F2F2;
@@ -26,7 +28,6 @@ button{
 
 
 
-
 /*Condition du mode dark actif*/
 /*@media (prefers-color-scheme: dark) {*/
     body {
@@ -42,19 +43,26 @@ button{
         background: #803e8c;
         color: #f3dcfc;
         border: 5px double #000;
-
+        padding: .5em;
     }
+    label {
+        margin-top: 1.5em;
+    }
+    input[type='submit'], button[type='submit'] {
+        border-radius: .5em;
+        margin-top: 2em;
+    }
+
 /*}*/
 
 /*@media (prefers-color-scheme: dark) {*/
 
 .attention {
     width: 330px;
-    margin: 0 auto;
     border-radius: 25px;
     border: 5px double #98979a;
     background: #8c3e3e;
-    margin-bottom: 2em;
+    margin: 0 auto 2em;
     padding: 1em;
     color: #f3dcfc;
     text-align: center;
@@ -62,29 +70,53 @@ button{
 }
 .corps {
     width: 330px;
-    margin: 0 auto;
     border-radius: 25px;
     background: #391b3f;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin: 2em auto;
     padding: 1em;
+    text-align: center;
+
 
 }
+
+.corps h4, .corps h3 , .corps h2 , .corps p, .corps li {
+    text-align: left;
+    list-style-type: none;
+}
+//input.corps [type='text'] {
+//    text-align: left;
+//}
+
 .EspCommantaire {
     width: 330px;
-    margin: 0 auto;
     border-radius: 25px;
     background: #391b3f;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin: 2em auto;
     padding: 1em;
 }
 .MyPopup {
     width: 330px;
-    margin: 0 auto;
     border-radius: 25px;
     background: #4cb718;
+    margin: 2em auto;
+    padding: 1em;
+}
+
+
+.cartequizzDiv {
+    text-align: center;
     margin-top: 2em;
     margin-bottom: 2em;
     padding: 1em;
+}
+.cartequizz {
+    width: 100%;
+}
+
+.boutonQCM {
+    background: #c962dc;
+    padding: .5em;
+    letter-spacing: 3px;
+    font-family: Arial, serif;
+
 }

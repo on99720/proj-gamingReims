@@ -10,6 +10,9 @@ if(!isset($_SESSION["InfosUser"]["ID"]))
 {
     header("Location: findme.php");
 }
+if(count($_SESSION["InfosUser"]["QCMFini"])-1<4) {
+    header("Location: ToutQUIZZ.php");
+}
 
 $totalCorrect = $_SESSION["InfosUser"]["Score"] ?? 0;
 
@@ -41,7 +44,7 @@ NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br
                 <input type="text" name="pnom" placeholder="ton prénom" size="30" id="leprenom" />
             <br />
                 <label for="letel">Ton n° de téléphone :</label>
-                <input type="text" name="tel" placeholder="ton n°" size="20" required id="letel" />
+                <input type="tel" name="tel" placeholder="ton n°" size="20" required id="letel" />
             <br />
                 <label for="lemail">Ton e-mail :  </label>
                 <input type="text" name="mail" placeholder="ton@email.com" size="30" required id="lemail" />
@@ -49,7 +52,7 @@ NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br
                <input type="hidden" name="score" id="score" value="{$_SESSION["InfosUser"]["Score"]}">
                <label for="lenivet">Ton niveau d'étude :</label>
                <select  name="nivetude" id="lenivet">
-                   <option value="">--Séléctionnez le niveau d'études</option>
+                   <option value="">Niveau scolaire</option>
                    <option value="Collège">Collège</option>
                    <option value="Lycée">Lycée</option>
                    <option value="Bac">Baccalauréat</option>
@@ -65,6 +68,20 @@ NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br
        </p>
        
     </form>
+</div>
+<div class="corps">
+    <h4>Déja inscrit?</h4>
+    <br>
+    <p>Pour recommencer les QUIZZ, il faut rescanner le QR code du début du jeu.
+    <br> <br>Les nouveaux scores sont enregistrables, mais dans ce cas, tu dois re remplir le formulaire ci-haut pour l'enregistrer.
+    </p>
+    <br>
+    <p>Sinon, clique sur ce bouton ci-bas :</p>
+    <form action="endpage.php">
+        <button type = "submit">Liste des scores</button>
+    </form>
+    
+    <br>
 </div>
     <div>
         <a href="THE_VOID.php">[WIP] Go to THE VOID</a>

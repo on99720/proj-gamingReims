@@ -45,25 +45,38 @@ $p->appendContent(<<<HTML
             <form action="AnalyseurDeQRcode.php">
                   <button type="submit">Appuie ici pour activer ton scanner QRC si tu es proche d'un QR QUIZZ.</button>
             </form>
-            <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
         </div>
         <br>
         <br>
-        <h4>Voici la carte des QR QUIZZ cachés, ci-bas.</h4>
+        <br>
+        <h4>Voici la carte des QR QUIZZ cachés :</h4>
+        <p>(Appuyer dessus pour la grossir)</p>
+        <div class="cartequizzDiv">
+            <img class="cartequizz" src="img/kisspng-computer-icons-google-maps-location-5b1d56b8dcf122.249317311528649400905.jpg" alt="map">
+            <br/>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h4>Tes points actuels :</h4>
+        <form action="ResultCurrent.php">
+              <button type="submit">Voir mes points.</button>
+        </form>
+        <br>
+        <br>
     </div>
-    <br/>
-        <img src="img/kisspng-computer-icons-google-maps-location-5b1d56b8dcf122.249317311528649400905.jpg" width="900" alt="map">
-    <br/>
+    
     <br>
     <div class="EspCommantaire">
         <h4>Une remarques?</h4>
         <form method="POST" action="EspaceRemarque.php">
            <input type="hidden" name="source" id="source" value="PageMere">
-           <input type="text" name="pseudo" placeholder="Un pseudo (< 29 lettres)" size="29" required /><br />
-           <textarea name="commentaire" placeholder="Votre commentaire... (< 2000 lettres)" rows="5" cols="35" required></textarea><br />
+           <input type="text" name="pseudo" placeholder="Un pseudo au pif (< 29 lettres)" size="29" required /><br />
+           <textarea name="commentaire" placeholder="Ton commentaire. (< 2000 lettres)" rows="5" cols="35" required></textarea><br />
            <input type="submit" value="Poster ma remarque" name="submit_commentaire" />
         </form>
     </div>
+    <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
    
 HTML
 );

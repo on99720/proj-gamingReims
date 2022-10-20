@@ -19,7 +19,7 @@ if ($_POST['tel']=="" Or $_POST['mail']=="" Or $_POST['nom']=="")
     return;
 }
 // Valide taille des entrées
-if (strlen($_POST['nom']) > 17 Or (strlen($_POST['pnom']) > 17))
+if (strlen($_POST['nom']) > 20 Or (strlen($_POST['pnom']) > 20))
 {
     echo('nom ou prénom trop grand');
     return;
@@ -30,17 +30,20 @@ if(!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
     return;
 }
 
+if (isset($_SESSION['COMMENCEMENT_TIME']) && (time() - $_SESSION['COMMENCEMENT_TIME'] < 300)) {
+    echo "Les triches ne sont pas permises. :P";
+    return;
+}
+$_SESSION['COMMENCEMENT_TIME'] = time();
+
 try {
     $req = MyPDO::getInstance()->prepare(<<<SQL
-update Utilisateur 
-set nom = :nom,pnom=:pnom,mail=:mail,score=:score,nivEtude=:nivetude,Telephone=:tel
-where id = :id
-SQL
-
+        update Utilisateur 
+        set nom = :nom,pnom=:pnom,mail=:mail,score=:score,nivEtude=:nivetude,Telephone=:tel
+        where id = :id
+    SQL
     );
-} catch (Exception $e) {
-}
-if (isset($req)) {
+
     $req->execute([
         'id'=> $_SESSION["InfosUser"]["ID"],
         'nom'=> $_POST['nom'],
@@ -50,7 +53,18 @@ if (isset($req)) {
         'nivetude'=>$_POST['nivetude'],
         'tel'=>$_POST['tel']
     ]);
+
+
+
+
+    header("Location: endpage.php");
+
+
+} catch (Exception $e) {
+    echo('une erreur s\'est produite, veuillez réésayer');
+    return;
 }
 
-header("Location: endpage.php");
+
+
 

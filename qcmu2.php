@@ -11,22 +11,23 @@ if(!isset($_SESSION["InfosUser"]["ID"]))
     header("Location: findme.php");
 }
 
-if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
-    $num = 5;
+if(!$_SESSION["InfosUser"]["CheckQCM2"]) {
+    $num = 2;
     $_SESSION["InfosUser"]["numQCM"] = $num;
     $title = "Bienvenue au QCM n°$num";
     $p = new WebPage($title);
     try {
         $stmt = MyPDO::getInstance()->prepare(<<<SQL
-        SELECT intitule,id
-        FROM QUESTION
-    SQL
+SELECT intitule,id
+FROM QUESTION
+SQL
 
         );
     } catch (Exception $e) {
     }
     if (isset($stmt)) {
         $stmt->execute();
+
         $quest = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $questQCM = array_rand($quest,4);
@@ -34,15 +35,15 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
         $quest2 = $quest[$questQCM[1]]["intitule"];
         $quest3 = $quest[$questQCM[2]]["intitule"];
         $quest4 = $quest[$questQCM[3]]["intitule"];
-        if(!isset($_SESSION["InfosUser"]["QCM5Q1"])) {
-            $_SESSION["InfosUser"]["QCM5ID1"] = $quest[$questQCM[0]]["id"];
-            $_SESSION["InfosUser"]["QCM5ID2"] = $quest[$questQCM[1]]["id"];
-            $_SESSION["InfosUser"]["QCM5ID3"] = $quest[$questQCM[2]]["id"];
-            $_SESSION["InfosUser"]["QCM5ID4"] = $quest[$questQCM[3]]["id"];
-            $_SESSION["InfosUser"]["QCM5Q1"] = $quest1;
-            $_SESSION["InfosUser"]["QCM5Q2"] = $quest2;
-            $_SESSION["InfosUser"]["QCM5Q3"] = $quest3;
-            $_SESSION["InfosUser"]["QCM5Q4"] = $quest4;
+        if(!isset($_SESSION["InfosUser"]["QCM2Q1"])) {
+            $_SESSION["InfosUser"]["QCM2ID1"] = $quest[$questQCM[0]]["id"];
+            $_SESSION["InfosUser"]["QCM2ID2"] = $quest[$questQCM[1]]["id"];
+            $_SESSION["InfosUser"]["QCM2ID3"] = $quest[$questQCM[2]]["id"];
+            $_SESSION["InfosUser"]["QCM2ID4"] = $quest[$questQCM[3]]["id"];
+            $_SESSION["InfosUser"]["QCM2Q1"] = $quest1;
+            $_SESSION["InfosUser"]["QCM2Q2"] = $quest2;
+            $_SESSION["InfosUser"]["QCM2Q3"] = $quest3;
+            $_SESSION["InfosUser"]["QCM2Q4"] = $quest4;
         }
         $stmt1 = MyPDO::getInstance()->prepare(<<<SQL
             Select intitule,VoF
@@ -50,34 +51,31 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
             where idQuestion = :id
         SQL
 
-            );
-        }
-        if (isset($stmt1)) {
-            $stmt1->bindParam('id',$_SESSION["InfosUser"]["QCM5ID1"]);
-
+    );
+        $stmt1->bindParam('id',$_SESSION["InfosUser"]["QCM2ID1"]);
         $stmt1->execute();
         $repQ1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
         $stmt2 = MyPDO::getInstance()->prepare(<<<SQL
-            Select intitule,VoF
-            from reponse
-            where idQuestion = :id
-        SQL
+                Select intitule,VoF
+                from reponse
+                where idQuestion = :id
+            SQL
 
         );
-        $stmt2->bindParam('id',$_SESSION["InfosUser"]["QCM5ID2"]);
+        $stmt2->bindParam('id',$_SESSION["InfosUser"]["QCM2ID2"]);
         $stmt2->execute();
         $repQ2 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 
         $stmt3 = MyPDO::getInstance()->prepare(<<<SQL
-            Select intitule,VoF
-            from reponse
-            where idQuestion = :id
-        SQL
+                Select intitule,VoF
+                from reponse
+                where idQuestion = :id
+            SQL
 
         );
-        $stmt3->bindParam('id',$_SESSION["InfosUser"]["QCM5ID3"]);
+        $stmt3->bindParam('id',$_SESSION["InfosUser"]["QCM2ID3"]);
         $stmt3->execute();
         $repQ3 = $stmt3->fetchAll(PDO::FETCH_ASSOC);
 
@@ -88,7 +86,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
         SQL
 
         );
-        $stmt4->bindParam('id',$_SESSION["InfosUser"]["QCM5ID4"]);
+        $stmt4->bindParam('id',$_SESSION["InfosUser"]["QCM2ID4"]);
         $stmt4->execute();
         $repQ4 = $stmt4->fetchAll(PDO::FETCH_ASSOC);
         $p->appendCssUrl("css/DarkTheme.css");
@@ -99,13 +97,13 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
      
      <h1>$title</h1>
      
-     <form action="resultQCM5p.php" method="post" id="quiz">
+     <form action="resultQCM2a.php" method="post" id="quiz">
      
                 <ol>
                 
                     <li>
                     
-                        <h3>{$_SESSION["InfosUser"]["QCM5Q1"]}</h3>
+                        <h3>{$_SESSION["InfosUser"]["QCM2Q1"]}</h3>
                         
                         <div>
                             <input type="radio" name="question-1-answers" id="question-1-answers-A" value="{$repQ1[0]["VoF"]}" />
@@ -131,7 +129,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
                     
                     <li>
                     
-                        <h3>{$_SESSION["InfosUser"]["QCM5Q2"]}</h3>
+                        <h3>{$_SESSION["InfosUser"]["QCM2Q2"]}</h3>
                         
                         <div>
                             <input type="radio" name="question-2-answers" id="question-2-answers-A" value="{$repQ2[0]["VoF"]}" />
@@ -157,7 +155,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
                     
                     <li>
                     
-                        <h3>{$_SESSION["InfosUser"]["QCM5Q3"]}</h3>
+                        <h3>{$_SESSION["InfosUser"]["QCM2Q3"]}</h3>
                         
                         <div>
                             <input type="radio" name="question-3-answers" id="question-3-answers-A" value="{$repQ3[0]["VoF"]}" />
@@ -183,7 +181,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
                     
                     <li>
                     
-                        <h3>{$_SESSION["InfosUser"]["QCM5Q4"]}</h3>
+                        <h3>{$_SESSION["InfosUser"]["QCM2Q4"]}</h3>
                         
                         <div>
                             <input type="radio" name="question-4-answers" id="question-4-answers-A" value="{$repQ4[0]["VoF"]}" />
@@ -209,7 +207,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
                 
                 </ol>
                 
-                <input type="submit" value="Submit" class="submitbtn" />
+                <input class="boutonQCM" type="submit" value="VALIDER" class="submitbtn" />
      
      </form>
      
@@ -228,3 +226,4 @@ else
     //die();
 
 }
+

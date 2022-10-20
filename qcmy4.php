@@ -207,7 +207,7 @@ SQL
                 
                 </ol>
                 
-                <input type="submit" value="Submit" class="submitbtn" />
+                <input class="boutonQCM" type="submit" value="VALIDER" class="submitbtn" />
      
      </form>
      

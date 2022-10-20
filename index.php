@@ -33,6 +33,8 @@ if(!isset($_SESSION["InfosUser"]))
 {
     $_SESSION["InfosUser"]= [];
 }
+$_SESSION['COMMENCEMENT_TIME'] = time();
+
 if(!isset($_SESSION["InfosUser"]["CheckQCM1"]))
 {
     $_SESSION["InfosUser"]["CheckQCM1"]= false;
