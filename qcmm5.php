@@ -4,6 +4,8 @@ require_once ('autoload.php');
 try {
     Session::start();
 } catch (SessionException $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 
 if(!isset($_SESSION["InfosUser"]["ID"]))
@@ -23,9 +25,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
     SQL
 
         );
-    } catch (Exception $e) {
-    }
-    if (isset($stmt)) {
+
         $stmt->execute();
         $quest = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -51,9 +51,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
         SQL
 
             );
-        }
-        if (isset($stmt1)) {
-            $stmt1->bindParam('id',$_SESSION["InfosUser"]["QCM5ID1"]);
+        $stmt1->bindParam('id',$_SESSION["InfosUser"]["QCM5ID1"]);
 
         $stmt1->execute();
         $repQ1 = $stmt1->fetchAll(PDO::FETCH_ASSOC);
@@ -128,7 +126,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
                         </div>
                     
                     </li>
-                    
+                    <br>
                     <li>
                     
                         <h3>{$_SESSION["InfosUser"]["QCM5Q2"]}</h3>
@@ -154,7 +152,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
                         </div>
                     
                     </li>
-                    
+                    <br>
                     <li>
                     
                         <h3>{$_SESSION["InfosUser"]["QCM5Q3"]}</h3>
@@ -180,7 +178,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
                         </div>
                     
                     </li>
-                    
+                    <br>
                     <li>
                     
                         <h3>{$_SESSION["InfosUser"]["QCM5Q4"]}</h3>
@@ -219,7 +217,10 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"]) {
     HTML
         );
         echo $p->toHTML();
-        }
+    } catch (Exception $e) {
+        header("Location: ErreurPage.php");
+        return;
+    }
 }
 else
 {

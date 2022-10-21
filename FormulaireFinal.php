@@ -4,6 +4,8 @@ require_once ('autoload.php');
 try {
     Session::start();
 } catch (SessionException $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 
 
@@ -56,12 +58,12 @@ try {
 
 
 
-
+    $_SESSION["InfosUser"]["alerte"]= "Tes informations ont bien été enregistré.";
     header("Location: endpage.php");
 
 
 } catch (Exception $e) {
-    echo('une erreur s\'est produite, veuillez réésayer');
+    header("Location: ErreurPage.php");
     return;
 }
 

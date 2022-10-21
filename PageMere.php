@@ -3,6 +3,8 @@ require_once "autoload.php";
 try {
     Session::start();
 } catch (SessionException $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 
 if(!isset($_SESSION["InfosUser"]["ID"]))
@@ -32,13 +34,15 @@ $p->appendContent(<<<HTML
     </div>
     
     <div class="corps">
-        <h4>Trouve et scanne les 5 QR QUIZZ cachés sur le lieu, pour finir ton aventure et gagner le prix par tirage aux sort. </h4>
-        <h4>Une bonne réponse à chaque question t'apporte 1 point. Si tu as au moins 5 points à la fin, tu seras pris en compte dans le tirage, si tu as trouvé tous les QUIZZ. </h4>
+        <h4>Trouve et scanne les 5 QR QUIZZ cachés sur le lieu, pour finir ton aventure, et gagner le prix par tirage aux sort. </h4>
+        <h4>Une bonne réponse à chaque question t'apporte 1 point. Si tu as au moins 3 points à la fin, et si tu as trouvé tous les QUIZZ, tu seras pris en compte dans le tirage. </h4>
         <br>
         <div>
             <h4>A la fin des 5 QR QUIZZ, ton nom, ton n°, et ton mail te seront demandés pour t'enregistrer dans la liste des participants. </h4>
         </div>
         <br>
+        <h4>Le jeu est recommensable si tu rescannes le Qrcode de départ (QR code de géolocalisation).
+        <br><br>
         <h4>Au cas de non fonctionnement du scanner ci-bas, utilise une application comme "QR Scanner FR", théoriquement disponible dans ton store.</h4>
         <br>
         <div>
@@ -52,7 +56,7 @@ $p->appendContent(<<<HTML
         <h4>Voici la carte des QR QUIZZ cachés :</h4>
         <p>(Appuyer dessus pour la grossir)</p>
         <div class="cartequizzDiv">
-            <img class="cartequizz" src="img/kisspng-computer-icons-google-maps-location-5b1d56b8dcf122.249317311528649400905.jpg" alt="map">
+            <a href="img/image_map.jpg" target="_blank"><img class="cartequizz" src="img/image_map.jpg" alt="Map aux QUIZZ" /></a>
             <br/>
         </div>
         <br>
@@ -84,4 +88,6 @@ HTML
 try {
     echo $p->toHTML();
 } catch (Exception $e) {
+    header("Location: ErreurPage.php");
+    return;
 }

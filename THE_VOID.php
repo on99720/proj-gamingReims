@@ -4,6 +4,8 @@ require_once ('autoload.php');
 try {
     Session::start();
 } catch (SessionException $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 
 $title = 'C\'est la fin';
@@ -13,10 +15,14 @@ $p = new WebPage($title);
 $p->appendCssUrl("css/DarkTheme.css");
 $p->appendContent(<<<HTML
 <div class="corps">
+
     <li>
-        <a href="index.php">Lieu de l'EPSI QRcode</a>
+        <a href="Geolocalisateur.php">Géolocalisation</a>
     </li>
-    <Br>
+    <li>
+        <a href="index.php">(Lieu de l'EPSI QRcode)</a>
+    </li>
+    <br>
     
     <div id="redirects">
         <li>
@@ -49,11 +55,7 @@ $p->appendContent(<<<HTML
     <li>
     <a href="endpage.php">Page de fin</a>
     </li>
-    <Br>
-    
-    <li>
-    <a href="Geolocalisateur.php">Géolocalisation</a>
-    </li>
+
 </div>
 
 HTML
@@ -61,4 +63,6 @@ HTML
 try {
     echo $p->toHTML();
 } catch (Exception $e) {
+    header("Location: ErreurPage.php");
+    return;
 }

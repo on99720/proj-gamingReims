@@ -1,14 +1,18 @@
 <?php declare(strict_types=1);
 require_once "autoload.php";
-try {
-    Session::start();
-} catch (SessionException $e) {
-}
-session_destroy();
+//try {
+//    Session::start();
+//} catch (SessionException $e) {
+//    header("Location: ErreurPage.php");
+//    return;
+//}
+//session_destroy();
 
 try {
     Session::start();
 } catch (SessionException $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 
 if(!isset($_SESSION["InfosUser"]))
@@ -28,7 +32,8 @@ $p->appendCssUrl("css/DarkTheme.css");
 $p->appendContent(<<<HTML
 
     <div class="corps">
-        <p id="demo">Click sur ce boutton pour vérifier ta présence sur le lieu du jeu.</p>
+        <p id="demo">Click sur ce boutton pour vérifier ta présence sur le lieu du jeu.<br><br>
+        Ce bouton réinitialise aussi le jeu si tu souhaites recommencer.<br><br> (sans effacer ton score précédentament enregistré)<br></p>
         <button onclick="getLocation()">Valider ma présence</button>
     </div>
     
@@ -69,4 +74,6 @@ HTML
 try {
     echo $p->toHTML();
 } catch (Exception $e) {
+    header("Location: ErreurPage.php");
+    return;
 }

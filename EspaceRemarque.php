@@ -3,6 +3,8 @@ require_once "autoload.php";
 try {
     Session::start();
 } catch (SessionException $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 
 // Valide taille des entrées
@@ -29,7 +31,8 @@ try {
 
 
 } catch (Exception $e) {
-    $_SESSION["InfosUser"]["alerte"]= "Votre message n'a pas pu être envoyé.";
+    header("Location: ErreurPage.php");
+    return;
 }
 
 

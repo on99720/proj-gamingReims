@@ -3,6 +3,8 @@ require_once "autoload.php";
 try {
     Session::start();
 } catch (SessionException $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 
 $title= "Trouve Moi";
@@ -23,13 +25,14 @@ $p->appendContent(<<<HTML
         <form action="PageMere.php">
           <button type="submit">RETOUR</button>
         </form>
-        
+        <br>
     <script src="js/html5-qrcode.min.js"></script>
     <style>
       .result{
         background-color: green;
         color:#fff;
         padding:20px;
+        
       }
       .row{
         display:flex;
@@ -76,4 +79,6 @@ HTML
 try {
     echo $p->toHTML();
 } catch (Exception $e) {
+    header("Location: ErreurPage.php");
+    return;
 }

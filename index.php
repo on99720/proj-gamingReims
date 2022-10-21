@@ -5,7 +5,10 @@ require_once('autoload.php');
 try {
     Session::start();
 } catch (SessionException $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
+
 if(!isset($_SESSION["InfosUser"]["ID"])) {
 
     if (!isset($_SESSION["InfosUser"]["VerifGeoloc"])) {
@@ -24,6 +27,8 @@ if(!isset($_SESSION["InfosUser"]["ID"])) {
 try {
     Session::start();
 } catch (SessionException $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 $title = 'Bienvenue';
 $p = new WebPage($title);
@@ -80,7 +85,6 @@ if(!isset($_SESSION["InfosUser"]["ID"]) or $_SESSION["InfosUser"]["QCMFini"] == 
         $idbd->execute();
         $idbd->setFetchMode(PDO::FETCH_NUM);
         $idmax = $idbd->fetchAll();
-        try {
             $stmt = MyPDO::getInstance()->prepare(<<<SQL
                 INSERT INTO utilisateur (id)
                 value (:id)
@@ -90,8 +94,10 @@ if(!isset($_SESSION["InfosUser"]["ID"]) or $_SESSION["InfosUser"]["QCMFini"] == 
             $stmt->execute(['id' => $iduser]);
             $_SESSION["InfosUser"]["ID"] = $iduser;
 
-        } catch (Exception $e) {}
-    } catch (Exception $e) {}
+    } catch (Exception $e) {
+        header("Location: ErreurPage.php");
+        return;
+    }
 
 }
 //todo random du premier QCM
@@ -104,7 +110,9 @@ $p->appendContent(<<<HTML
         
         <div class="corps">
             <h1>Bienvenue</h1>
-            <h2>Merci de participer a ce magnifique jeu concours au travers de la game'in Reims.</h2>
+        </div>
+        <div class="corps">
+            <h2>Merci de participer à ce magnifique jeu concours au travers de la game'in Reims.</h2>
                 <form action="PageMere.php">
                     <button type = "submit">Continuer</button>
                 </form>
@@ -123,5 +131,7 @@ HTML
 try {
     echo $p->toHTML();
 } catch (Exception $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 //ob_end_flush();

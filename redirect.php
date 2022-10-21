@@ -5,6 +5,8 @@ require_once('autoload.php');
 try {
     Session::start();
 } catch (SessionException $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 
 

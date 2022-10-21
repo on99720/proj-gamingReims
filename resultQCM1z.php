@@ -4,6 +4,8 @@ require_once ('autoload.php');
 try {
     Session::start();
 } catch (SessionException $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 
 if(!isset($_SESSION["InfosUser"]["ID"]))
@@ -49,16 +51,15 @@ if(!$_SESSION["InfosUser"]["CheckQCM1"])
     
     <div class="corps">
      
-     <h1>Result QCM1</h1>
-            
+     <h1>Résultat QCM1</h1>
+     <br>
      <div id='results'>$totalCorrect / 4 correct</div>
-       <li>
-        <a href="PageMere.php">Continuer</a>
-       </li> 
-       <li>
-        <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
-       </li> 
+     <br>
+         <form action="PageMere.php">
+              <button type="submit">Continuer</button>
+         </form>
     </div>
+    <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
 
     HTML
         );
@@ -133,4 +134,6 @@ if($_SESSION["InfosUser"]["CheckQCM1"]&&$_SESSION["InfosUser"]["CheckQCM2"]&&$_S
 try {
     echo $p->toHTML();
 } catch (Exception $e) {
+    header("Location: ErreurPage.php");
+    return;
 }

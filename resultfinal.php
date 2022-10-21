@@ -4,6 +4,8 @@ require_once ('autoload.php');
 try {
     Session::start();
 } catch (SessionException $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 
 if(!isset($_SESSION["InfosUser"]["ID"]))
@@ -72,11 +74,15 @@ NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br
 <div class="corps">
     <h4>Déja inscrit?</h4>
     <br>
-    <p>Pour recommencer les QUIZZ, il faut rescanner le QR code du début du jeu.
-    <br> <br>Les nouveaux scores sont enregistrables, mais dans ce cas, tu dois re remplir le formulaire ci-haut pour l'enregistrer.
-    </p>
+    <p>Tu peux re remplir le formulaire en haut pour changer tes informations rentrées précédentes. </p>
     <br>
-    <p>Sinon, clique sur ce bouton ci-bas :</p>
+    
+    <p>Tes nouveaux scores sont enregistrables en plus des précédents, mais dans ce cas, 
+    tu dois re remplir le formulaire ci-haut pour les enregistrer.</p>
+    <br>
+    <p>Pour recommencer les QUIZZ, il faut rescanner le QR code du début du jeu.</p>
+    <br>
+    <p>Sinon, clique sur ce bouton ci-bas pour voir tous les scores :</p>
     <form action="endpage.php">
         <button type = "submit">Liste des scores</button>
     </form>
@@ -94,6 +100,8 @@ HTML
 try {
     echo $p->toHTML();
 } catch (Exception $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 //setcookie("TotalPoints", "0");
 //setcookie("Validator_QCM1", "",-1);

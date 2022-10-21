@@ -4,6 +4,8 @@ require_once ('autoload.php');
 try {
     Session::start();
 } catch (SessionException $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 
 if(!isset($_SESSION["InfosUser"]["ID"]))
@@ -23,9 +25,7 @@ FROM QUESTION
 SQL
 
         );
-    } catch (Exception $e) {
-    }
-    if (isset($stmt)) {
+
         $stmt->execute();
 
         $quest = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -126,7 +126,7 @@ SQL
                         </div>
                     
                     </li>
-                    
+                    <br>
                     <li>
                     
                         <h3>{$_SESSION["InfosUser"]["QCM4Q2"]}</h3>
@@ -152,7 +152,7 @@ SQL
                         </div>
                     
                     </li>
-                    
+                    <br>
                     <li>
                     
                         <h3>{$_SESSION["InfosUser"]["QCM4Q3"]}</h3>
@@ -178,7 +178,7 @@ SQL
                         </div>
                     
                     </li>
-                    
+                    <br>
                     <li>
                     
                         <h3>{$_SESSION["InfosUser"]["QCM4Q4"]}</h3>
@@ -217,6 +217,9 @@ SQL
     HTML
         );
         echo $p->toHTML();
+    } catch (Exception $e) {
+        header("Location: ErreurPage.php");
+        return;
     }
 }
 else

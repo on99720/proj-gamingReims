@@ -4,6 +4,8 @@ require_once ('autoload.php');
 try {
     Session::start();
 } catch (SessionException $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 
 if(!isset($_SESSION["InfosUser"]["ID"]))
@@ -11,7 +13,7 @@ if(!isset($_SESSION["InfosUser"]["ID"]))
     header("Location: findme.php");
 }
 
-$totalCorrect = 0;
+
 if(count($_SESSION["InfosUser"]["QCMFini"])>0) {
     $lastQCM = $_SESSION["InfosUser"]["QCMFini"][count($_SESSION["InfosUser"]["QCMFini"]) - 1];
     if ($_SESSION["InfosUser"]["CheckQCM5"] && $lastQCM[0] != 5) {
@@ -45,16 +47,16 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"])
     $p->appendContent(<<<HTML
      <div class="corps">
      
-     <h1>Result QCM5</h1>
-            
+     <h1>Résultat QCM5</h1>
+     <br>
      <div id='results'>$totalCorrect / 4 correct</div>
-       <li>
-        <a href="PageMere.php">Continuer</a>
-       </li> 
-       <li>
-        <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
-       </li> 
-     </div>
+     <br>
+         <form action="PageMere.php">
+              <button type="submit">Continuer</button>
+         </form>
+    </div>
+    <br>
+    <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
     HTML
     );
 }else{
@@ -65,4 +67,9 @@ if(!$_SESSION["InfosUser"]["CheckQCM5"])
 if($_SESSION["InfosUser"]["CheckQCM1"]&&$_SESSION["InfosUser"]["CheckQCM2"]&&$_SESSION["InfosUser"]["CheckQCM3"]&&$_SESSION["InfosUser"]["CheckQCM4"]&&$_SESSION["InfosUser"]["CheckQCM5"])
 {header("Location: resultfinal.php");}
 // TODO Random prochain QCM
-echo $p->toHTML();
+try {
+    echo $p->toHTML();
+} catch (Exception $e) {
+    header("Location: ErreurPage.php");
+    return;
+}
