@@ -18,6 +18,9 @@ $title = 'C\'est la fin';
 $p = new WebPage($title);
 $p->appendCssUrl("css/DarkTheme.css");
 
+require_once "Fonctions/EffectNeige.php";
+EffectNeige($p);
+
 //Popup de message de confirmation
 if (isset($_SESSION["InfosUser"]["alerte"])) {
     require_once "Fonctions/PopupMaker.php";
@@ -26,21 +29,23 @@ if (isset($_SESSION["InfosUser"]["alerte"])) {
 }
 
 $p->appendContent(<<<HTML
+    <br>
+    <br>
     <div class="corps">
-        <h1>Merci d'avoir participé!</h1>
+        <h1>Score des participants</h1>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="corps">
+        <br>
 
 HTML
 );
 
 
 
-    $p->appendCssUrl("css/ListeDeParticipantss.css");
-    $p->appendContent(<<<HTML
-    
-        </div>
-        <div class="corps">
-    HTML
-    );
+
 
 
 
@@ -56,9 +61,8 @@ HTML
                 <br/>
                 <br>
                 <h4>Réessayer?</h4>
-                <p>(tous tes scores sont conservés, et multiplient tes chances du tirage)</p>
-                <li><a href="Geolocalisateur.php">Encore un essai !</a></li>
-                <br>
+                <p>(Tous tes scores sont conservés, et multiplient tes chances au tirage au sort, par le nombre de fois que tu t'es enregistré)</p>
+                <li><a href="Geolocalisateur.php">Je réessaie !</a></li>
                 <br>
         
         HTML
@@ -66,7 +70,9 @@ HTML
 
         $p->appendContent(<<<HTML
                 <br/>
+                <h1>Merci d'avoir participé!</h1>
                 <br/>
+                <br>
                 <h4>Un commentaire?</h4>
                 <form method="POST" action="EspaceRemarque.php">
                    <input type="hidden" name="source" id="source" value="EndPage">
@@ -77,22 +83,15 @@ HTML
                    <input type="submit" value="Poster ma remarque" name="submit_commentaire" />
                 </form>
                 <br/>
-                <br/>
-                <br/>
+        </div>
+        <br>
+        <br>
+        <div class="corps">
         HTML
         );
     }
 
-    $p->appendContent(<<<HTML
-    </div>
-    <div class="corps">
-    
-    
-        <h2>Score des participants</h2>
-        <br>
-
-    HTML
-    );
+    $p->appendCssUrl("css/ListeDeParticipantss.css");
 
 try {
 
@@ -157,10 +156,15 @@ try {
     }
     $p->appendContent(<<<HTML
         <br>
-        <br>
-        <br>
+
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
+
 
     HTML
     );

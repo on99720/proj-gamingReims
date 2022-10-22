@@ -18,6 +18,10 @@ if(!isset($_SESSION["InfosUser"]["ID"]))
 $title= "Trouve Moi";
 $p = New WebPage($title);
 
+require_once "Fonctions/EffectNeige.php";
+EffectNeige($p);
+
+
 //Popup de message de confirmation
 if (isset($_SESSION["InfosUser"]["alerte"])) {
     require_once "Fonctions/PopupMaker.php";
@@ -27,7 +31,14 @@ if (isset($_SESSION["InfosUser"]["alerte"])) {
 
 $p->appendCssUrl("css/DarkTheme.css");
 $p->appendContent(<<<HTML
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="attention">
     NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br>
     (Votre navigateur peut etre mis en veille, mais sa fermeture entraîne l'effacement totale de vos informations.)
@@ -35,6 +46,7 @@ $p->appendContent(<<<HTML
     
     <div class="corps">
         <h4>Trouve et scanne les 5 QR QUIZZ cachés sur le lieu, pour finir ton aventure, et gagner le prix par tirage aux sort. </h4>
+        <br>
         <h4>Une bonne réponse à chaque question t'apporte 1 point. Si tu as au moins 3 points à la fin, et si tu as trouvé tous les QUIZZ, tu seras pris en compte dans le tirage. </h4>
         <br>
         <div>
@@ -126,7 +138,7 @@ $p->appendContent(<<<HTML
         </form>
     </div>
     <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
-   
+
 HTML
 );
 

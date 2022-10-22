@@ -23,6 +23,8 @@ if($AccessVOID){
     $p->appendContent(<<<HTML
     <div class="corps">
     
+        <h2>Développeur only</h2>
+        <br>
         <li>
             <a href="Geolocalisateur.php">Géolocalisation</a>
         </li>

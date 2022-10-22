@@ -10,6 +10,9 @@ try {
 $title= "Trouve Moi";
 $p = New WebPage($title);
 
+require_once "Fonctions/EffectNeige.php";
+EffectNeige($p);
+
 $p->appendCssUrl("css/DarkTheme.css");
 $p->appendContent(<<<HTML
 <div class="corps">

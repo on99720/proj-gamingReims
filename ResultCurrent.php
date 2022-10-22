@@ -14,10 +14,15 @@ if(!isset($_SESSION["InfosUser"]["ID"]))
 
 $title= "Trouve Moi";
 $p = New WebPage($title);
+
+require_once "Fonctions/EffectNeige.php";
+EffectNeige($p);
+
 $p->appendCssUrl("css/DarkTheme.css");
 
 $totalCorrect = $_SESSION["InfosUser"]["Score"];
 $p->appendContent(<<<HTML
+    <br>
      <div class="corps">
      
          <h1>Resultat total actuel</h1>

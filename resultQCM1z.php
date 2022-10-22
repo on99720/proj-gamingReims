@@ -22,6 +22,10 @@ if(count($_SESSION["InfosUser"]["QCMFini"])>0) {
 
 $title = 'QCM points';
 $p = new WebPage($title);
+
+require_once "Fonctions/EffectNeige.php";
+EffectNeige($p);
+
 $p->appendCssUrl("css/DarkTheme.css");
 
 if(!$_SESSION["InfosUser"]["CheckQCM1"])
@@ -44,7 +48,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM1"])
     $_SESSION["InfosUser"]["numQCM"] = count($_SESSION["InfosUser"]["QCMFini"]);
 
     $p->appendContent(<<<HTML
-    
+    <br>
     <div class="attention">
     NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br>
     (Votre navigateur peut etre mis en veille, mais sa fermeture entraîne l'effacement totale de vos informations.)

@@ -20,10 +20,14 @@ $totalCorrect = $_SESSION["InfosUser"]["Score"] ?? 0;
 
 $title = 'QCM';
 $p = new WebPage($title);
+
+require_once "Fonctions/EffectNeige.php";
+EffectNeige($p);
+
 $p->appendCssUrl("css/DarkTheme.css");
 
 $p->appendContent(<<<HTML
-
+<br>
 <div class="attention">
 NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br>
 (Votre navigateur peut etre mis en veille, mais sa fermeture entraîne l'effacement totale de vos informations.)

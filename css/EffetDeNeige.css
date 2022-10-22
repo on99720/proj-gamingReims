@@ -1,0 +1,42 @@
+.illustration {
+    position: relative;
+    margin: -5px auto 0 -5px;
+    width : 475px;
+    height: auto;
+}
+
+//.i-large,
+.i-medium,
+.i-small {
+    position : absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+
+}
+
+//.i-large {
+//    background: url("Effects/particules_large.png") repeat 0 0;
+//    -webkit-animation: dropFlowParticles 2s linear infinite;
+//    -o-animation: dropFlowParticles 2s linear infinite;
+//    animation: dropFlowParticles 2s linear infinite;
+//}
+.i-medium {
+    background: url("Effects/particules_mediumm.png") repeat 0 0;
+    -webkit-animation: dropFlowParticles 24s linear infinite;
+    -o-animation: dropFlowParticles 24s linear infinite;
+    animation: dropFlowParticles 24s linear infinite;
+}
+.i-small {
+    background:url("Effects/particules_small.png") repeat 0 0;
+    -webkit-animation: dropFlowParticles 74s linear infinite;
+    -o-animation: dropFlowParticles 74s linear infinite;
+    animation: dropFlowParticles 74s linear infinite;
+}
+
+@-webkit-keyframes dropFlowParticles {
+    from { background-position: 0 0; }
+    to { background-position: 0 413px; }
+}
+@keyframes dropFlowParticles {
+    from { background-position: 0 0; }
+    to { background-position: 0 413px; }
+}

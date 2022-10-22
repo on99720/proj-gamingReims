@@ -18,6 +18,10 @@ if(!$_SESSION["InfosUser"]["CheckQCM2"]) {
     $_SESSION["InfosUser"]["numQCM"] = $num;
     $title = "Bienvenue au QCM n°$num";
     $p = new WebPage($title);
+
+    require_once "Fonctions/EffectNeige.php";
+    EffectNeige($p);
+
     try {
         $stmt = MyPDO::getInstance()->prepare(<<<SQL
 SELECT intitule,id
@@ -92,7 +96,7 @@ SQL
         $p->appendCssUrl("css/DarkTheme.css");
         $p->appendCssUrl("css/QCMStyle.css");
         $p->appendContent(<<<HTML
-     
+     <br>
      <div id="page-wrap">
      
      <h1>$title</h1>
@@ -212,7 +216,7 @@ SQL
      </form>
      
      </div>
-     
+     <br>
     
     HTML
         );

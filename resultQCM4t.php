@@ -23,6 +23,10 @@ if(count($_SESSION["InfosUser"]["QCMFini"])>0) {
 
 $title = 'QCM points';
 $p = new WebPage($title);
+
+require_once "Fonctions/EffectNeige.php";
+EffectNeige($p);
+
 $p->appendCssUrl("css/DarkTheme.css");
 
 if(!$_SESSION["InfosUser"]["CheckQCM4"])
@@ -45,6 +49,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM4"])
     $_SESSION["InfosUser"]["numQCM"] = count($_SESSION["InfosUser"]["QCMFini"]);
 
     $p->appendContent(<<<HTML
+    <br>
      <div class="corps">
      
      <h1>Résultat QCM4</h1>

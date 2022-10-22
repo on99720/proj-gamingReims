@@ -19,6 +19,10 @@ if(!$_SESSION["InfosUser"]["CheckQCM1"]) {
     $title = "Bienvenue au QCM n°$num";
     $p = new WebPage($title);
 
+    require_once "Fonctions/EffectNeige.php";
+    EffectNeige($p);
+
+
     try {
         $stmt = MyPDO::getInstance()->prepare(<<<SQL
 SELECT intitule,id
@@ -94,6 +98,7 @@ SQL
         $p->appendCssUrl("css/QCMStyle.css");
         $p->appendContent(<<<HTML
     
+    <br>
     <div class="attention">
     NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br>
     (Votre navigateur peut etre mis en veille, mais sa fermeture entraîne l'effacement totale de vos informations.)
@@ -219,7 +224,7 @@ SQL
          </form>
      
      </div>
-     
+     <br>
     
     HTML
         );
