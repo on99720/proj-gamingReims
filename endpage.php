@@ -32,9 +32,6 @@ $p->appendContent(<<<HTML
 HTML
 );
 
-try {
-
-    $reponse = MyPDO::getInstance()->query("SELECT score,nom,pnom FROM utilisateur ORDER BY score DESC");
 
 
     $p->appendCssUrl("css/ListeDeParticipantss.css");
@@ -57,6 +54,12 @@ try {
                     $points Points
                 </div>
                 <br/>
+                <br>
+                <h4>Réessayer?</h4>
+                <p>(tous tes scores sont conservés, et multiplient tes chances du tirage)</p>
+                <li><a href="Geolocalisateur.php">Encore un essai !</a></li>
+                <br>
+                <br>
         
         HTML
         );
@@ -64,7 +67,7 @@ try {
         $p->appendContent(<<<HTML
                 <br/>
                 <br/>
-                <h4>Une remarques?</h4>
+                <h4>Un commentaire?</h4>
                 <form method="POST" action="EspaceRemarque.php">
                    <input type="hidden" name="source" id="source" value="EndPage">
                    <li>
@@ -81,6 +84,9 @@ try {
     }
 
     $p->appendContent(<<<HTML
+    </div>
+    <div class="corps">
+    
     
         <h2>Score des participants</h2>
         <br>
@@ -88,6 +94,39 @@ try {
     HTML
     );
 
+try {
+
+    $p->appendContent(<<<HTML
+    
+        <form method="POST" action="endpage.php">
+           <select name="ClasserPar" onchange="submit();">
+               <option value="">Classer par...</option>
+               <option value="Nom">Nom</option>
+               <option value="PNom">Prénom</option>
+               <option value="Score">Score</option>
+           </select>
+        </form>
+        <br>
+
+    HTML
+    );
+
+    $SortInfo='score';
+    if(isset($_POST['ClasserPar'])){
+        switch ($_POST['ClasserPar']){
+            case "Score":
+            case "":
+                break;
+            case "Nom":
+                $SortInfo='nom';
+                break;
+            case "PNom":
+                $SortInfo='pnom';
+                break;
+        }
+    }
+
+    $reponse = MyPDO::getInstance()->query("SELECT score,nom,pnom FROM utilisateur ORDER BY $SortInfo DESC");
     $donnees = $reponse -> fetchAll();
 
     $icount = count($donnees);
@@ -101,7 +140,7 @@ try {
         $ipnom = $donnees[$i]['pnom'];
 
         if(!($ipnom==null && $inom==null)){
-            $disp1 = $ipnom . " " . $inom ;
+            $disp1 = $inom . " " . $ipnom ;
             $disp2 = " (" . $donnees[$i]['score'] . " Points)"  ;
             $p->appendContent(<<<HTML
                 <div class="CenterDiv">

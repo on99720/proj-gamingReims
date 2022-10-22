@@ -53,6 +53,57 @@ $p->appendContent(<<<HTML
         <br>
         <br>
         <br>
+HTML
+);
+
+
+if($_SESSION["InfosUser"]["CheckQCM1"]){$QCM1Check ='Fait';$scoreQCM1 = $_SESSION["InfosUser"]["QCM1Score"];}else{$QCM1Check ='Nn'; $scoreQCM1 = 0;}
+if($_SESSION["InfosUser"]["CheckQCM2"]){$QCM2Check ='Fait';$scoreQCM2 = $_SESSION["InfosUser"]["QCM2Score"];}else{$QCM2Check ='Nn'; $scoreQCM2 = 0;}
+if($_SESSION["InfosUser"]["CheckQCM3"]){$QCM3Check ='Fait';$scoreQCM3 = $_SESSION["InfosUser"]["QCM3Score"];}else{$QCM3Check ='Nn'; $scoreQCM3 = 0;}
+if($_SESSION["InfosUser"]["CheckQCM4"]){$QCM4Check ='Fait';$scoreQCM4 = $_SESSION["InfosUser"]["QCM4Score"];}else{$QCM4Check ='Nn'; $scoreQCM4 = 0;}
+if($_SESSION["InfosUser"]["CheckQCM5"]){$QCM5Check ='Fait';$scoreQCM5 = $_SESSION["InfosUser"]["QCM5Score"];}else{$QCM5Check ='Nn'; $scoreQCM5 = 0;}
+
+$totalCorrect = $_SESSION["InfosUser"]["Score"];
+
+$p->appendContent(<<<HTML
+
+        <br>
+        <h4>Tes points au total : </h4>
+        <div class="Tableau">
+            <div class="colonne">
+                Quizz 1<br>
+                Quizz 2<br>
+                Quizz 3<br>
+                Quizz 4<br>
+                Quizz 5<br>        
+            </div>
+            <div class="colonne">
+                $QCM1Check<br>
+                $QCM2Check<br>
+                $QCM3Check<br>
+                $QCM4Check<br>
+                $QCM5Check<br>        
+            </div>
+            <div class="colonneNum">
+                $scoreQCM1/4<br>
+                $scoreQCM2/4<br>
+                $scoreQCM3/4<br>
+                $scoreQCM4/4<br>
+                $scoreQCM5/4<br>
+            </div>
+            
+        </div>
+        <br>
+        $totalCorrect /20
+        
+        
+HTML
+);
+
+$p->appendContent(<<<HTML
+        <br>
+        <br>
+        <br>
         <h4>Voici la carte des QR QUIZZ cachés :</h4>
         <p>(Appuyer dessus pour la grossir)</p>
         <div class="cartequizzDiv">
@@ -60,12 +111,6 @@ $p->appendContent(<<<HTML
             <br/>
         </div>
         <br>
-        <br>
-        <br>
-        <h4>Tes points actuels :</h4>
-        <form action="ResultCurrent.php">
-              <button type="submit">Voir mes points.</button>
-        </form>
         <br>
         <br>
     </div>

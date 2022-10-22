@@ -40,6 +40,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM2"])
 
     $_SESSION["InfosUser"]["Score"] += $totalCorrect;
     $_SESSION["InfosUser"]["CheckQCM2"] = true;
+    $_SESSION["InfosUser"]["QCM2Score"] = $totalCorrect;
     $_SESSION["InfosUser"]["QCMFini"][] = [2];
     $_SESSION["InfosUser"]["numQCM"] = count($_SESSION["InfosUser"]["QCMFini"]);
 

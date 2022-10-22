@@ -33,7 +33,7 @@ $p->appendContent(<<<HTML
 
     <div class="corps">
         <p id="demo">Click sur ce boutton pour vérifier ta présence sur le lieu du jeu.<br><br>
-        Ce bouton réinitialise aussi le jeu si tu souhaites recommencer.<br><br> (sans effacer ton score précédentament enregistré)<br></p>
+        Ce bouton réinitialise aussi le jeu si tu souhaites recommencer.<br><br> (sans effacer tes scores précédentament enregistrés)<br></p>
         <button onclick="getLocation()">Valider ma présence</button>
     </div>
     
