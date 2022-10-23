@@ -111,7 +111,18 @@ $p->appendContent(<<<HTML
         
 HTML
 );
+if($_SESSION["InfosUser"]["CheckQCM1"]&&$_SESSION["InfosUser"]["CheckQCM2"]&&$_SESSION["InfosUser"]["CheckQCM3"]&&$_SESSION["InfosUser"]["CheckQCM4"]&&$_SESSION["InfosUser"]["CheckQCM5"])
+{
+    $p->appendContent(<<<HTML
 
+        <form action="resultfinal.php">
+              <button type="submit"> Enregistre tes points </button>
+        </form>
+
+    HTML
+    );
+
+}
 $p->appendContent(<<<HTML
         <br>
         <br>
@@ -134,6 +145,8 @@ $p->appendContent(<<<HTML
            <input type="hidden" name="source" id="source" value="PageMere">
            <input type="text" name="pseudo" placeholder="Un pseudo au pif (< 29 lettres)" size="29" required /><br />
            <textarea name="commentaire" placeholder="Ton commentaire. (< 2000 lettres)" rows="5" cols="35" required></textarea><br />
+           
+           <input type="hidden" name="idprofil" value="{$_SESSION["InfosUser"]["ID"]}">
            <input type="submit" value="Poster ma remarque" name="submit_commentaire" />
         </form>
     </div>

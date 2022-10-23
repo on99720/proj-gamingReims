@@ -33,8 +33,12 @@ if(!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
 }
 
 if (isset($_SESSION['COMMENCEMENT_TIME']) && (time() - $_SESSION['COMMENCEMENT_TIME'] < 300)) {
-    echo "Les triches ne sont pas permises. :P";
-    return;
+    header("Location: PageTriche.php");
+//    if (isset($_POST['reply']) && $_POST['reply']=="OUI"){
+//        echo "OK";
+//    }else{
+    exit();
+//    }
 }
 $_SESSION['COMMENCEMENT_TIME'] = time();
 

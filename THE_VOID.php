@@ -8,8 +8,11 @@ try {
     return;
 }
 
-//$AccessVOID = false;
-$AccessVOID = true;
+//$_SESSION["InfosUser"]["AccessVOID"] = false;
+$_SESSION["InfosUser"]["AccessVOID"] = true;
+
+
+
 
 $title = 'VOID';
 
@@ -18,7 +21,7 @@ $p = new WebPage($title);
 $p->appendCssUrl("css/DarkTheme.css");
 
 
-if($AccessVOID){
+if($_SESSION["InfosUser"]["AccessVOID"]){
 
     $p->appendContent(<<<HTML
     <div class="corps">

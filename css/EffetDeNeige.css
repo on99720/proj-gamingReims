@@ -1,7 +1,6 @@
 .illustration {
-    position: relative;
+    margin: 0 auto;
 
-    margin: 2em auto;
     width : 475px;
     height: auto;
 }
@@ -11,6 +10,7 @@
 .i-small {
     position : absolute;
     top: 0; right: 0; bottom: 0; left: 0;
+
 
 }
 

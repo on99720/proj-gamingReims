@@ -17,14 +17,15 @@ if (strlen($_POST['commentaire']) > 2000 Or (strlen($_POST['pseudo']) > 29) )
 try {
     $req = MyPDO::getInstance()->prepare(<<<SQL
     insert Remarques
-    set pseudo = :psdo,commentaire=:com,source=:src;
+    set pseudo = :psdo,commentaire=:com,source=:src,IDProfil=:idprofil;
     SQL
     );
 
     $req->execute([
         'psdo'=> $_POST['pseudo'],
         'com'=>$_POST['commentaire'],
-        'src'=>$_POST['source']
+        'src'=>$_POST['source'],
+        'idprofil'=>$_POST['idprofil']
     ]);
 
     $_SESSION["InfosUser"]["alerte"]= "Votre message a bien été envoyé.";

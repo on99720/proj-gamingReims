@@ -34,14 +34,16 @@ NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br
 </div>
 
 <div class="corps">
-    <h3>Vos points au total:</h3>
     <br>
-    <h4>$totalCorrect / 20 correct </h4>  
+    <h4>Bravo! Plus que l'étape de ton enregistrement pour continuer!</h4>
     <br>
-    <h4>Bravo! Plus que l'étape de ton enregistrement pour participer au tirage au sort!</h4>
+    <h4>Ces informations seront utiliser au tirage au sort.</h4>
+    <br>
+    <br>
+    
     
     <form method="post" action="FormulaireFinal.php">
-       <p>
+       <p>(Nom, téléphone, et email sont obligatoires.)
             <br />
                 <label for="lenom">Ton nom :   </label>
                 <input type="text" name="nom" placeholder="ton nom" size="30" required id="lenom" />
