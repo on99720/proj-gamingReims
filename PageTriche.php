@@ -19,21 +19,21 @@ $p->appendContent(<<<HTML
         <br>
 HTML
 );
-
+//
 //if (isset($_SESSION["InfosUser"]["AccessVOID"]) && $_SESSION["InfosUser"]["AccessVOID"]) {
 //    $p->appendContent(<<<HTML
-//                <p>Triche volontaire ?</p>
-//                <form action="FormulaireFinal.php" method="post">
-//                    <input type="hidden" name="reply" id="reply" value="OUI">
-//                    <button type="submit">OUI</button>
-//                </form>
-//                <br>
-//            </div>
+//            <p>Triche volontaire ?</p>
+//            <input type="submit" name="submit" value="OK">
+//            <br>
+//        </div>
 //    HTML
 //    );
 //
+//    if (!isset($_POST['submit'])) {
+//        exit;
+//    }
 //}
-
+//
 try {
     echo $p->toHTML();
 } catch (Exception $e) {

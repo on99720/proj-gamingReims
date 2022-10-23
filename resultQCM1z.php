@@ -60,11 +60,7 @@ if(!$_SESSION["InfosUser"]["CheckQCM1"])
      <br>
      <div id='results'>$totalCorrect / 4 correct</div>
      <br>
-         <form action="PageMere.php">
-              <button type="submit">Continuer</button>
-         </form>
-    </div>
-    <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
+    
 
     HTML
     );
@@ -75,9 +71,33 @@ else{
 
 
 
-//TODO random du Prochain QCM
+
 if($_SESSION["InfosUser"]["CheckQCM1"]&&$_SESSION["InfosUser"]["CheckQCM2"]&&$_SESSION["InfosUser"]["CheckQCM3"]&&$_SESSION["InfosUser"]["CheckQCM4"]&&$_SESSION["InfosUser"]["CheckQCM5"])
-{header("Location: resultfinal.php");}
+{
+    $p->appendContent(<<<HTML
+        <form action="resultfinal.php">
+                  <button type="submit"> Enregistrer tes points </button>
+        </form>
+    HTML
+    );
+}else{
+    $p->appendContent(<<<HTML
+         <form action="PageMere.php">
+              <button type="submit">Continuer</button>
+         </form>
+        
+    HTML
+    );
+}
+
+$p->appendContent(<<<HTML
+    
+    </div>
+    <a href="THE_VOID.php">[WIP] Go to THE VOID</a>
+
+HTML
+);
+
 try {
     echo $p->toHTML();
 } catch (Exception $e) {

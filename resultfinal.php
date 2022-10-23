@@ -37,7 +37,7 @@ NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br
     <br>
     <h4>Bravo! Plus que l'étape de ton enregistrement pour continuer!</h4>
     <br>
-    <h4>Ces informations seront utiliser au tirage au sort.</h4>
+    <h4>Ces informations seront utilisées pour le tirage au sort.</h4>
     <br>
     <br>
     
@@ -86,9 +86,12 @@ NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br
     <p>Tes nouveaux scores sont enregistrables en plus des précédents, mais dans ce cas, 
     tu dois re remplir le formulaire ci-haut pour les enregistrer.</p>
     <br>
-    <p>Pour recommencer les QUIZZ, il faut rescanner le QR code du début du jeu.</p>
+    <p>Pour recommencer les QUIZZ, il faut rescanner le QR code du début du jeu, ou cliquer sur un lien adéquat comme celui-ci.
+        <li><a href="Geolocalisateur.php">lien du QRcode du début du jeu </a></li>
+    </p>
+    
     <br>
-    <p>Sinon, clique sur ce bouton ci-bas pour voir tous les scores :</p>
+    <p>Sinon, clique sur ce bouton ci-bas pour voir tous les scores, ainsi que le tien :</p>
     <form action="endpage.php">
         <button type = "submit">Liste des scores</button>
     </form>

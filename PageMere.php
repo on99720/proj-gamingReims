@@ -116,7 +116,7 @@ if($_SESSION["InfosUser"]["CheckQCM1"]&&$_SESSION["InfosUser"]["CheckQCM2"]&&$_S
     $p->appendContent(<<<HTML
 
         <form action="resultfinal.php">
-              <button type="submit"> Enregistre tes points </button>
+              <button type="submit"> Enregistrer tes points </button>
         </form>
 
     HTML
