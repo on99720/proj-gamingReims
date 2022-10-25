@@ -95,13 +95,23 @@ button{
     padding: 1em;
 }
 .MyPopup {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     width: 330px;
     border-radius: 25px;
     background: #4cb718;
     margin: 2em auto;
     padding: 1em;
 }
+.MyPopup .c1{
+    width: 250px;
+}
+.MyPopup .croix{
+    width: 10px;
 
+}
 
 .cartequizzDiv {
     text-align: center;

@@ -51,6 +51,10 @@ if (isset($_SESSION['COMMENCEMENT_TIME']) && (time() - $_SESSION['COMMENCEMENT_T
 
                 if (isset($_SESSION["InfosUser"]["AccessVOID"]) && $_SESSION["InfosUser"]["AccessVOID"]) {
                     $p->appendContent(<<<HTML
+                        </div>
+                        <div class="corps">
+                            <h2>Mode développeur</h2>
+                            <br>
                             <p>Triche volontaire ?</p>
                             <form method="post">
                                 <input type="hidden" name="nom" value="{$_POST['nom']}" />

@@ -43,7 +43,7 @@ NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br
     
     
     <form method="post" action="FormulaireFinal.php">
-       <p>(Nom, téléphone, et email sont obligatoires.)
+       <p>Nom, téléphone, et email sont obligatoires
             <br />
                 <label for="lenom">Ton nom :   </label>
                 <input type="text" name="nom" placeholder="ton nom" size="30" required id="lenom" />

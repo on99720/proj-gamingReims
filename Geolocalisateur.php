@@ -36,7 +36,25 @@ $p->appendContent(<<<HTML
         Ce bouton réinitialise aussi le jeu si tu souhaites recommencer.<br><br> (sans effacer tes scores précédentament enregistrés)<br></p>
         <button onclick="getLocation()">Valider ma présence</button>
     </div>
-    
+    HTML
+);
+
+
+if (isset($_SESSION["InfosUser"]["AccessVOID"]) && $_SESSION["InfosUser"]["AccessVOID"]) {
+    $p->appendContent(<<<HTML
+        <div class="corps">
+            <h2>Mode développeur</h2>
+            <br>
+            <p>Mauvaises coordonnées GPS ?</p>
+            <form action="GeolocalisationTerminer.php">
+                  <button type="submit"> OUI </button>
+            </form>
+            <br>
+        </div>
+    HTML
+    );
+}
+$p->appendContent(<<<HTML
     
     <script>
     const x=document.getElementById("demo");

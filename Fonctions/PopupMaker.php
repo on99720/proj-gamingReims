@@ -7,7 +7,12 @@ function PopupMaker($p,$texti) {
     $p->appendContent(<<<HTML
         <br>
         <div class="MyPopup" id="MyPopup">
-                $texti  <span onmouseover="this.style.cursor='pointer'" onclick="document.getElementById('MyPopup').style.display='none'"> X </span>
+                <div class="c1">
+                    $texti 
+                </div> 
+                <div class="croix">
+                    <span onmouseover="this.style.cursor='pointer'" onclick="document.getElementById('MyPopup').style.display='none'"> X </span>
+                </div>
         </div>
 
     HTML
