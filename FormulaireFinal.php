@@ -36,7 +36,7 @@ if(!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
 
 
 //triche détecté
-if (isset($_SESSION['COMMENCEMENT_TIME']) && (time() - $_SESSION['COMMENCEMENT_TIME'] < 600)) {
+if (isset($_SESSION['COMMENCEMENT_TIME']) && (time() - $_SESSION['COMMENCEMENT_TIME'] < 900)) {
                 $title= "Triche";
                 $p = New WebPage($title);
                 $p->appendCssUrl("css/DarkTheme.css");
