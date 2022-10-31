@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 31 oct. 2022 à 06:49
+-- Généré le : lun. 31 oct. 2022 à 14:12
 -- Version du serveur : 10.4.25-MariaDB
 -- Version de PHP : 8.1.10
 
@@ -24,12 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `admin`
+-- Structure de la table `developeur`
 --
 
-CREATE TABLE `admin` (
-  `DevMod` tinyint(1) NOT NULL DEFAULT 1
+CREATE TABLE `developeur` (
+  `DevMod` tinyint(1) NOT NULL DEFAULT 1,
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `developeur`
+--
+
+INSERT INTO `developeur` (`DevMod`, `id`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -260,109 +268,173 @@ INSERT INTO `theme` (`id`, `nom`) VALUES
 
 CREATE TABLE `utilisateur` (
   `id` int(11) NOT NULL,
+  `identitee` int(10) NOT NULL DEFAULT 0,
   `nom` varchar(50) DEFAULT NULL,
   `pnom` varchar(50) DEFAULT NULL,
   `mail` varchar(50) DEFAULT NULL,
   `score` int(30) DEFAULT NULL,
   `nivEtude` varchar(50) DEFAULT NULL,
-  `Telephone` varchar(20) DEFAULT NULL
+  `Telephone` varchar(20) DEFAULT NULL,
+  `temps_abs` int(11) NOT NULL DEFAULT 0,
+  `temps_rel` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`id`, `nom`, `pnom`, `mail`, `score`, `nivEtude`, `Telephone`) VALUES
-(1, 'jack', 'beauregard', 'mail@mail.fr', 5, 'jsp', NULL),
-(4, 'tgh', 'med', 'jki@gh.fg', 0, 'Collège', NULL),
-(6, 'tester', 'tester', 'tester@ui.fr', 8, 'Master', NULL),
-(9, 'test2', 'testgh2', 'vb@hi.de', 1, 'Lycée', NULL),
-(40, 'tes morts', 'mange', 'bk@ji.fr', 2, 'Collège', NULL),
-(59, 'tyu', 'opo', 'kl@kl.fr', 4, 'Bac', NULL),
-(60, 'Magi', 'DUfrey', 'df@gjk.fr', 0, 'Lycée', NULL),
-(61, NULL, NULL, NULL, NULL, NULL, NULL),
-(62, 'test3', 'fgh', 'fg@hg.fr', 2, 'Collège', '0654818194'),
-(63, NULL, NULL, NULL, NULL, NULL, NULL),
-(64, NULL, NULL, NULL, NULL, NULL, NULL),
-(65, NULL, NULL, NULL, NULL, NULL, NULL),
-(66, NULL, NULL, NULL, NULL, NULL, NULL),
-(67, NULL, NULL, NULL, NULL, NULL, NULL),
-(68, NULL, NULL, NULL, NULL, NULL, NULL),
-(69, NULL, NULL, NULL, NULL, NULL, NULL),
-(70, NULL, NULL, NULL, NULL, NULL, NULL),
-(71, NULL, NULL, NULL, NULL, NULL, NULL),
-(72, NULL, NULL, NULL, NULL, NULL, NULL),
-(73, NULL, NULL, NULL, NULL, NULL, NULL),
-(74, NULL, NULL, NULL, NULL, NULL, NULL),
-(75, 'dfddfd', 'dddf', 'fg@fg.fr', 0, 'Collège', '0202020202'),
-(76, 'mased', '', 'fg@fg.fg', 0, '', '1515151515'),
-(77, NULL, NULL, NULL, NULL, NULL, NULL),
-(78, NULL, NULL, NULL, NULL, NULL, NULL),
-(79, NULL, NULL, NULL, NULL, NULL, NULL),
-(80, NULL, NULL, NULL, NULL, NULL, NULL),
-(81, NULL, NULL, NULL, NULL, NULL, NULL),
-(82, NULL, NULL, NULL, NULL, NULL, NULL),
-(83, NULL, NULL, NULL, NULL, NULL, NULL),
-(84, NULL, NULL, NULL, NULL, NULL, NULL),
-(85, NULL, NULL, NULL, NULL, NULL, NULL),
-(86, 'Sapristi', 'Saucisse', 'df@df.fr', 8, '', '0202020202'),
-(87, NULL, NULL, NULL, NULL, NULL, NULL),
-(88, NULL, NULL, NULL, NULL, NULL, NULL),
-(89, NULL, NULL, NULL, NULL, NULL, NULL),
-(90, NULL, NULL, NULL, NULL, NULL, NULL),
-(91, NULL, NULL, NULL, NULL, NULL, NULL),
-(92, NULL, NULL, NULL, NULL, NULL, NULL),
-(93, 'test88', 'test88', 'df@df.df', 1, 'Collège', '0202020202'),
-(94, 'test88', 'test88', 'df@df.df', 1, '', '0202020202'),
-(95, 'dddddddddddd', 'Saucisse', 'df@df.fr', 4, '', '0202020202'),
-(96, NULL, NULL, NULL, NULL, NULL, NULL),
-(97, NULL, NULL, NULL, NULL, NULL, NULL),
-(98, 'Alfred', '', 'df@df.fr', 6, '', '0202020202'),
-(99, NULL, NULL, NULL, NULL, NULL, NULL),
-(100, NULL, NULL, NULL, NULL, NULL, NULL),
-(101, NULL, NULL, NULL, NULL, NULL, NULL),
-(102, 'Quade', '', 'df@hj.fr', 5, 'Bac', '0101010101'),
-(103, NULL, NULL, NULL, NULL, NULL, NULL),
-(104, NULL, NULL, NULL, NULL, NULL, NULL),
-(105, NULL, NULL, NULL, NULL, NULL, NULL),
-(106, 'test3', 'med', 'fg@hg.fr', 0, '', '0654818194'),
-(107, 'test3', 'med', 'fg@hg.fr', 0, '', '0654818194'),
-(108, 'fg', 'fgh', 'fg@hg.fr', 0, '', '0654818194'),
-(109, 'test3', 'Pruno', 'fg@fg.fg', 0, '', '0654818194'),
-(110, 'Von Jasmin', 'med', 'ftg@uno.fr', 0, '', '0654818194'),
-(111, 'Jean Kevin', 'fgh', 'ftg@uno.fr', 0, '', '0654818194'),
-(112, NULL, NULL, NULL, NULL, NULL, NULL),
-(113, NULL, NULL, NULL, NULL, NULL, NULL),
-(114, NULL, NULL, NULL, NULL, NULL, NULL),
-(115, 'test3', 'Sebastien', 'ftg@ui.fr', 0, '', '0654818194'),
-(116, NULL, NULL, NULL, NULL, NULL, NULL),
-(117, 'Von Jasmin', 'med', 'ty@lm.fr', 0, '', '0654818194'),
-(118, 'Quio', 'tyu', 'p@p.p', 4, 'Master', '0202020202'),
-(119, NULL, NULL, NULL, NULL, NULL, NULL),
-(120, NULL, NULL, NULL, NULL, NULL, NULL),
-(121, 'Sapristi', 'Saucisse', 'df@df.fr', 5, '', '0202020202'),
-(122, NULL, NULL, NULL, NULL, NULL, NULL),
-(123, NULL, NULL, NULL, NULL, NULL, NULL),
-(124, NULL, NULL, NULL, NULL, NULL, NULL),
-(125, NULL, NULL, NULL, NULL, NULL, NULL),
-(126, 'test3', 'fgh', 'ftg@uno.fr', 0, '', '0654818194'),
-(127, 'test3', 'fgh', 'fg@fg.fg', 0, '', '0654818194'),
-(128, 'Sapristi', 'Saucisse', 'df@df.fr', 0, '', '0202020202'),
-(129, 'Sapristi', 'Saucisse', 'df@df.fr', 0, '', '0202020202'),
-(130, 'test3', 'fgh', 'fg@fg.fg', 4, '', '0654818194'),
-(131, NULL, NULL, NULL, NULL, NULL, NULL),
-(132, NULL, NULL, NULL, NULL, NULL, NULL),
-(133, NULL, NULL, NULL, NULL, NULL, NULL),
-(134, NULL, NULL, NULL, NULL, NULL, NULL),
-(135, NULL, NULL, NULL, NULL, NULL, NULL),
-(136, 'Sapristji', 'Saucisse', 'df@df.fr', 4, '', '0202020202'),
-(137, NULL, NULL, NULL, NULL, NULL, NULL),
-(138, 'Sapristi56', 'Saucisse', 'df@df.fr', 2, '', '0202020202'),
-(139, 'Sapristi', 'Saucisse', 'df@df.fr', 5, '', '0202020202');
+INSERT INTO `utilisateur` (`id`, `identitee`, `nom`, `pnom`, `mail`, `score`, `nivEtude`, `Telephone`, `temps_abs`, `temps_rel`) VALUES
+(1, 0, 'jack', 'beauregard', 'mail@mail.fr', 5, 'jsp', NULL, 0, 0),
+(4, 0, 'tgh', 'med', 'jki@gh.fg', 0, 'Collège', NULL, 0, 0),
+(6, 0, 'tester', 'tester', 'tester@ui.fr', 8, 'Master', NULL, 0, 0),
+(9, 0, 'test2', 'testgh2', 'vb@hi.de', 1, 'Lycée', NULL, 0, 0),
+(40, 0, 'tes morts', 'mange', 'bk@ji.fr', 2, 'Collège', NULL, 0, 0),
+(59, 0, 'tyu', 'opo', 'kl@kl.fr', 4, 'Bac', NULL, 0, 0),
+(60, 0, 'Magi', 'DUfrey', 'df@gjk.fr', 0, 'Lycée', NULL, 0, 0),
+(61, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(62, 0, 'test3', 'fgh', 'fg@hg.fr', 2, 'Collège', '0654818194', 0, 0),
+(63, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(64, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(65, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(66, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(67, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(68, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(69, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(70, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(71, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(72, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(73, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(74, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(75, 0, 'dfddfd', 'dddf', 'fg@fg.fr', 0, 'Collège', '0202020202', 0, 0),
+(76, 0, 'mased', '', 'fg@fg.fg', 0, '', '1515151515', 0, 0),
+(77, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(78, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(79, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(80, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(81, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(82, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(83, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(84, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(85, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(86, 0, 'Sapristi', 'Saucisse', 'df@df.fr', 8, '', '0202020202', 0, 0),
+(87, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(88, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(89, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(90, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(91, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(92, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(93, 0, 'test88', 'test88', 'df@df.df', 1, 'Collège', '0202020202', 0, 0),
+(94, 0, 'test88', 'test88', 'df@df.df', 1, '', '0202020202', 0, 0),
+(95, 0, 'dddddddddddd', 'Saucisse', 'df@df.fr', 4, '', '0202020202', 0, 0),
+(96, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(97, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(98, 0, 'Alfred', '', 'df@df.fr', 6, '', '0202020202', 0, 0),
+(99, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(100, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(101, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(102, 0, 'Quade', '', 'df@hj.fr', 5, 'Bac', '0101010101', 0, 0),
+(103, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(104, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(105, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(106, 0, 'test3', 'med', 'fg@hg.fr', 0, '', '0654818194', 0, 0),
+(107, 0, 'test3', 'med', 'fg@hg.fr', 0, '', '0654818194', 0, 0),
+(108, 0, 'fg', 'fgh', 'fg@hg.fr', 0, '', '0654818194', 0, 0),
+(109, 0, 'test3', 'Pruno', 'fg@fg.fg', 0, '', '0654818194', 0, 0),
+(110, 0, 'Von Jasmin', 'med', 'ftg@uno.fr', 0, '', '0654818194', 0, 0),
+(111, 0, 'Jean Kevin', 'fgh', 'ftg@uno.fr', 0, '', '0654818194', 0, 0),
+(112, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(113, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(114, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(115, 0, 'test3', 'Sebastien', 'ftg@ui.fr', 0, '', '0654818194', 0, 0),
+(116, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(117, 0, 'Von Jasmin', 'med', 'ty@lm.fr', 0, '', '0654818194', 0, 0),
+(118, 0, 'Quio', 'tyu', 'p@p.p', 4, 'Master', '0202020202', 0, 0),
+(119, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(120, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(121, 0, 'Sapristi', 'Saucisse', 'df@df.fr', 5, '', '0202020202', 0, 0),
+(122, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(123, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(124, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(125, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(126, 0, 'test3', 'fgh', 'ftg@uno.fr', 0, '', '0654818194', 0, 0),
+(127, 0, 'test3', 'fgh', 'fg@fg.fg', 0, '', '0654818194', 0, 0),
+(128, 0, 'Sapristi', 'Saucisse', 'df@df.fr', 0, '', '0202020202', 0, 0),
+(129, 0, 'Sapristi', 'Saucisse', 'df@df.fr', 0, '', '0202020202', 0, 0),
+(130, 0, 'test3', 'fgh', 'fg@fg.fg', 4, '', '0654818194', 0, 0),
+(131, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(132, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(133, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(134, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(135, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(136, 0, 'Sapristji', 'Saucisse', 'df@df.fr', 4, '', '0202020202', 0, 0),
+(137, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(138, 0, 'Sapristi56', 'Saucisse', 'df@df.fr', 2, '', '0202020202', 0, 0),
+(139, 0, 'Sapristi', 'Saucisse', 'df@df.fr', 5, '', '0202020202', 0, 0),
+(140, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(141, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(142, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(143, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(144, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(145, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(146, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(147, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(148, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(149, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(150, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(151, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(152, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(153, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(154, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(155, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(156, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(157, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(158, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(159, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(160, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(161, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(162, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(163, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(164, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(165, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(166, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(167, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(168, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(169, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(170, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(171, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(172, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(173, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(174, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(175, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(176, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(177, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(178, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(179, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(180, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(181, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(182, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(183, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(184, 0, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(185, 707480998, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(186, 943072712, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(187, 765324355, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(188, 578831591, 'Von Jasmink', 'med', 'fg@hg.fr', 0, '', '0654818194', 0, 0),
+(189, 776271270, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0),
+(190, 400021456, 'test3', 'Pruno', 'ftg@uno.fr', 4, '', '0654818194', 0, 0),
+(191, 482179617, 'test3', 'df', 'ty@lm.fr', 0, '', '0654818194', 0, 0),
+(192, 453837702, 'Von Jasmin', 'Pruno', 'ty@lm.fr', 0, '', '0654818194', 0, 0),
+(193, 580664174, 'Jean Kevin', 'fg', 'ty@lm.fr', 0, '', '0654818194', 124, 0),
+(194, 330169898, 'Jean Kevin', 'df', 'ty@lm.fr', 0, '', '0654818194', 1667220541, 714);
 
 --
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `developeur`
+--
+ALTER TABLE `developeur`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `question`
@@ -401,6 +473,12 @@ ALTER TABLE `utilisateur`
 --
 
 --
+-- AUTO_INCREMENT pour la table `developeur`
+--
+ALTER TABLE `developeur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT pour la table `question`
 --
 ALTER TABLE `question`
@@ -428,7 +506,7 @@ ALTER TABLE `theme`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
 
 --
 -- Contraintes pour les tables déchargées
