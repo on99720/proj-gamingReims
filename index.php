@@ -38,7 +38,6 @@ if(!isset($_SESSION["InfosUser"]))
 {
     $_SESSION["InfosUser"]= [];
 }
-$_SESSION['COMMENCEMENT_TIME'] = time();
 
 if(!isset($_SESSION["InfosUser"]["CheckQCM1"]))
 {
@@ -122,19 +121,20 @@ if(!isset($_SESSION["InfosUser"]["ID"]) or $_SESSION["InfosUser"]["QCMFini"] == 
 
         $req = MyPDO::getInstance()->prepare(<<<SQL
             update Utilisateur 
-            set identitee = :identitee
+            set identitee = :identitee, temps_abs = :temps_abs
             where id = :id
         SQL
         );
         $req->execute([
             'id'=> $_SESSION["InfosUser"]["ID"],
-            'identitee' => $numidentValide
+            'identitee' => $numidentValide,
+            'temps_abs' => microtime(true)
+
+
         ]);
         $_SESSION["InfosUser"]["IDent"] = $numidentValide;
     } catch (Exception $e) {
-        
-        //header("Location: ErreurPage.php");
-        
+        header("Location: ErreurPage.php");
         return;
     }
 
