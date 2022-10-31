@@ -8,9 +8,6 @@ try {
     return;
 }
 
-//$_SESSION["InfosUser"]["AccessVOID"] = false;
-$_SESSION["InfosUser"]["AccessVOID"] = true;
-
 
 
 
@@ -20,69 +17,75 @@ $p = new WebPage($title);
 
 $p->appendCssUrl("css/DarkTheme.css");
 
+try{
 
-if($_SESSION["InfosUser"]["AccessVOID"]){
+    $reponse = MyPDO::getInstance()->query("SELECT DevMod FROM developeur");
+    $donnees = $reponse -> fetchAll();
+    if ($donnees[0]['DevMod']) {
 
-    $p->appendContent(<<<HTML
-    <div class="corps">
-    
-        <h2>Développeur only</h2>
-        <br>
-        <li>
-            <a href="Geolocalisateur.php">Géolocalisation</a>
-        </li>
-        <li>
-            <a href="index.php">(Lieu de l'EPSI QRcode)</a>
-        </li>
-        <br>
+        $p->appendContent(<<<HTML
+        <div class="corps">
         
-        <div id="redirects">
+            <h2>Développeur only</h2>
+            <br>
             <li>
-            <a href="qcmo1.php">Go to QRcode1</a>
-            </li>   
-            <li>
-            <a href="qcmu2.php">Go to QRcode2</a>
-            </li>   
-            <li>
-            <a href="qcmi3.php">Go to QRcode3</a>
-            </li>   
-            <li>
-            <a href="qcmy4.php">Go to QRcode4</a>
-            </li>   
-            <li>
-            <a href="qcmm5.php">Go to QRcode5</a>
+                <a href="Geolocalisateur.php">Géolocalisation</a>
             </li>
+            <li>
+                <a href="index.php">(Lieu de l'EPSI QRcode)</a>
+            </li>
+            <br>
+            
+            <div id="redirects">
+                <li>
+                <a href="qcmo1.php">Go to QRcode1</a>
+                </li>   
+                <li>
+                <a href="qcmu2.php">Go to QRcode2</a>
+                </li>   
+                <li>
+                <a href="qcmi3.php">Go to QRcode3</a>
+                </li>   
+                <li>
+                <a href="qcmy4.php">Go to QRcode4</a>
+                </li>   
+                <li>
+                <a href="qcmm5.php">Go to QRcode5</a>
+                </li>
+            </div>
+            
+            <Br>
+            <li>
+            <a href="ResultCurrent.php">Résultats actuels</a>
+            </li>   
+            <li>
+            <a href="PageMere.php">Page Mère</a>
+            </li>   
+            <li>
+            <a href="resultfinal.php">Go to Final Result</a>
+            </li>   
+            <li>
+            <a href="endpage.php">Page de fin</a>
+            </li>
+        
         </div>
         
-        <Br>
-        <li>
-        <a href="ResultCurrent.php">Résultats actuels</a>
-        </li>   
-        <li>
-        <a href="PageMere.php">Page Mère</a>
-        </li>   
-        <li>
-        <a href="resultfinal.php">Go to Final Result</a>
-        </li>   
-        <li>
-        <a href="endpage.php">Page de fin</a>
-        </li>
-    
-    </div>
-    
-    HTML
-    );
+        HTML
+        );
+    }
+    else{
+        $p->appendContent(<<<HTML
+        <div class="corps">
+            <h3> Accès réservé aux dévelopeurs</h3>
+        </div>
+        
+        HTML
+        );
+    }
+} catch (Exception $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
-else{
-    $p->appendContent(<<<HTML
-    <div class="corps">
-        <h3> Accès réservé aux dévelopeurs</h3>
-    </div>
-    
-    HTML
-    );
-}
-
 
 try {
     echo $p->toHTML();

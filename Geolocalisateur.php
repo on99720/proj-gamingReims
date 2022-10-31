@@ -40,19 +40,26 @@ $p->appendContent(<<<HTML
 );
 
 
-if (isset($_SESSION["InfosUser"]["AccessVOID"]) && $_SESSION["InfosUser"]["AccessVOID"]) {
-    $p->appendContent(<<<HTML
-        <div class="corps">
-            <h2>Mode développeur</h2>
-            <br>
-            <p>Mauvaises coordonnées GPS ?</p>
-            <form action="GeolocalisationTerminer.php">
-                  <button type="submit"> OUI </button>
-            </form>
-            <br>
-        </div>
-    HTML
-    );
+try{
+    $reponse = MyPDO::getInstance()->query("SELECT DevMod FROM developeur");
+    $donnees = $reponse -> fetchAll();
+    if ($donnees[0]['DevMod']) {
+        $p->appendContent(<<<HTML
+            <div class="corps">
+                <h2>Mode développeur</h2>
+                <br>
+                <p>Mauvaises coordonnées GPS ?</p>
+                <form action="GeolocalisationTerminer.php">
+                    <button type="submit"> OUI </button>
+                </form>
+                <br>
+            </div>
+        HTML
+        );
+    }
+} catch (Exception $e) {
+    header("Location: ErreurPage.php");
+    return;
 }
 $p->appendContent(<<<HTML
     

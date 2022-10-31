@@ -94,8 +94,47 @@ if(!isset($_SESSION["InfosUser"]["ID"]) or $_SESSION["InfosUser"]["QCMFini"] == 
             $stmt->execute(['id' => $iduser]);
             $_SESSION["InfosUser"]["ID"] = $iduser;
 
+
+
+
+        // Ajout du n° d'identité
+
+
+        $reponse = MyPDO::getInstance()->query("SELECT identitee FROM utilisateur");
+        $donnees = $reponse -> fetchAll();
+        $jcount = count($donnees);
+        
+
+        $i = 1;
+        $numidentValide = 0;
+        while ($i <= 100):
+            $numident = rand(100000000,999999999);
+
+            for($j = 0; $j < $jcount; $j++){
+                $numbdd = $donnees[$j]['identitee'];
+                if($numbdd != $numident){
+                    $numidentValide = $numident;
+                    break 2;
+                }
+            }
+            $i++;
+        endwhile;
+
+        $req = MyPDO::getInstance()->prepare(<<<SQL
+            update Utilisateur 
+            set identitee = :identitee
+            where id = :id
+        SQL
+        );
+        $req->execute([
+            'id'=> $_SESSION["InfosUser"]["ID"],
+            'identitee' => $numidentValide
+        ]);
+        $_SESSION["InfosUser"]["IDent"] = $numidentValide;
     } catch (Exception $e) {
-        header("Location: ErreurPage.php");
+        
+        //header("Location: ErreurPage.php");
+        
         return;
     }
 

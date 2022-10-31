@@ -50,81 +50,109 @@ if (isset($_SESSION['COMMENCEMENT_TIME']) && (time() - $_SESSION['COMMENCEMENT_T
                 HTML
                 );
 
-                if (isset($_SESSION["InfosUser"]["AccessVOID"]) && $_SESSION["InfosUser"]["AccessVOID"]) {
-                    $p->appendContent(<<<HTML
-                        </div>
-                        <div class="corps">
-                            <h2>Mode développeur</h2>
-                            <br>
-                            <p>Triche volontaire ?</p>
-                            <form method="post">
-                                <input type="hidden" name="nom" value="{$_POST['nom']}" />
-                                <input type="hidden" name="pnom" value="{$_POST['pnom']}" />
-                                <input type="hidden" name="tel" value="{$_POST['tel']}" />
-                                <input type="hidden" name="mail" value="{$_POST['mail']}" />
-                                <input type="hidden" name="score" value="{$_POST['score']}"/>
-                                <input type="hidden" name="nivetude" value="{$_POST['nivetude']}"/>
-                                <input type="submit" name="submit" value="OK">
-                            </form>
-                            <br>
-                        </div>
-                    HTML
-                    );
-
-                    if (!isset($_POST['submit'])) {
-                        try {
-                            echo $p->toHTML();
-                        } catch (Exception $e) {
-                            header("Location: ErreurPage.php");
-                            return;
-                        }
-                        return;
+                try{
+                    $reponse = MyPDO::getInstance()->query("SELECT DevMod FROM developeur");
+                    $donnees = $reponse -> fetchAll();
+                    if ($donnees[0]['DevMod']) {
+                        $p->appendContent(<<<HTML
+                            </div>
+                            <div class="corps">
+                                <h2>Mode développeur</h2>
+                                <br>
+                                <p>Triche volontaire ?</p>
+                                <form method="post">
+                                    <input type="hidden" name="nom" value="{$_POST['nom']}" />
+                                    <input type="hidden" name="pnom" value="{$_POST['pnom']}" />
+                                    <input type="hidden" name="tel" value="{$_POST['tel']}" />
+                                    <input type="hidden" name="mail" value="{$_POST['mail']}" />
+                                    <input type="hidden" name="score" value="{$_POST['score']}"/>
+                                    <input type="hidden" name="nivetude" value="{$_POST['nivetude']}"/>
+                                    <input type="submit" name="submit" value="OK">
+                                </form>
+                                <br>
+                            </div>
+                        HTML
+                        );
                     }
                 }
-                try {
-                    echo $p->toHTML();
-                } catch (Exception $e) {
+                catch (Exception $e) {
                     header("Location: ErreurPage.php");
                     return;
                 }
 
+
+
+    if (!isset($_POST['submit'])) {
+        try {
+            echo $p->toHTML();
+        } catch (Exception $e) {
+            header("Location: ErreurPage.php");
+            return;
+        }
+        return;
+    }
+
 }
 
-
-
-
-
-
-
 try {
-    $req = MyPDO::getInstance()->prepare(<<<SQL
-        update Utilisateur 
-        set nom = :nom,pnom=:pnom,mail=:mail,score=:score,nivEtude=:nivetude,Telephone=:tel
-        where id = :id
-    SQL
-    );
 
-    $req->execute([
-        'id'=> $_SESSION["InfosUser"]["ID"],
-        'nom'=> $_POST['nom'],
-        'pnom'=>$_POST['pnom'],
-        'mail'=>$_POST['mail'],
-        'score'=>$_POST['score'],
-        'nivetude'=>$_POST['nivetude'],
-        'tel'=>$_POST['tel']
-    ]);
+    //vérifie l'identité
+
+    $reponse = MyPDO::getInstance()->query("SELECT identitee FROM utilisateur");
+    $donnees = $reponse -> fetchAll();
+    $jcount = count($donnees);
+    
+    $myident =$_SESSION["InfosUser"]["IDent"];
+
+    $bon = false;
+    for($j = 0; $j < $jcount; $j++){
+        $numbdd = $donnees[$j]['identitee'];
+        if($numbdd == $myident){
+            $bon =true;
+            break 1;
+        }
+    }
+
+
+    //identité valide, entré dans dans la bdd
+
+    if($bon == true){
+        
+        $req = MyPDO::getInstance()->prepare(<<<SQL
+            update Utilisateur 
+            set nom = :nom,pnom=:pnom,mail=:mail,score=:score,nivEtude=:nivetude,Telephone=:tel
+            where identitee = :identitee
+        SQL
+        );
+
+        $req->execute([
+            'identitee'=> $_SESSION["InfosUser"]["IDent"],
+            'nom'=> $_POST['nom'],
+            'pnom'=>$_POST['pnom'],
+            'mail'=>$_POST['mail'],
+            'score'=>$_POST['score'],
+            'nivetude'=>$_POST['nivetude'],
+            'tel'=>$_POST['tel']
+        ]);
 
 
 
-    $_SESSION["InfosUser"]["alerte"]= "Tes informations ont bien été enregistré.";
-    header("Location: endpage.php");
+        $_SESSION["InfosUser"]["alerte"]= "Tes informations ont bien été enregistré.";
+        header("Location: endpage.php");
+
+
+
+    }
+    else{
+        header("Location: ErreurPage.php");
+        return;
+    }
 
 
 } catch (Exception $e) {
     header("Location: ErreurPage.php");
     return;
 }
-
 
 
 
