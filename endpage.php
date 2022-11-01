@@ -141,7 +141,7 @@ try {
 
         if(!($ipnom==null && $inom==null)){
             $disp1 = $inom . " " . $ipnom ;
-            $disp2 = " (" . $donnees[$i]['score'] . " Points)"  ;
+            $disp2 = " " . $donnees[$i]['score'] . " Points"  ;
             $p->appendContent(<<<HTML
                 <div class="CenterDiv">
                     <div class="disp12">
