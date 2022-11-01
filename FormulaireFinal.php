@@ -91,7 +91,6 @@ try {
                                             <input type="hidden" name="pnom" value="{$_POST['pnom']}" />
                                             <input type="hidden" name="tel" value="{$_POST['tel']}" />
                                             <input type="hidden" name="mail" value="{$_POST['mail']}" />
-                                            <input type="hidden" name="score" value="{$_POST['score']}"/>
                                             <input type="hidden" name="nivetude" value="{$_POST['nivetude']}"/>
                                             <input type="submit" name="submit" value="OK">
                                         </form>
@@ -127,7 +126,7 @@ try {
         
         $req = MyPDO::getInstance()->prepare(<<<SQL
             update Utilisateur 
-            set nom = :nom,pnom=:pnom,mail=:mail,score=:score,nivEtude=:nivetude,Telephone=:tel,temps_rel=:temps_rel
+            set nom = :nom,pnom=:pnom,mail=:mail,nivEtude=:nivetude,Telephone=:tel,temps_rel=:temps_rel
             where identitee = :identitee
         SQL
         );
@@ -137,7 +136,6 @@ try {
             'nom'=> $_POST['nom'],
             'pnom'=>$_POST['pnom'],
             'mail'=>$_POST['mail'],
-            'score'=>$_POST['score'],
             'nivetude'=>$_POST['nivetude'],
             'tel'=>$_POST['tel'],
             'temps_rel'=>$tempsj

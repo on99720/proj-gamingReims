@@ -129,8 +129,6 @@ if(!isset($_SESSION["InfosUser"]["ID"]) or $_SESSION["InfosUser"]["QCMFini"] == 
             'id'=> $_SESSION["InfosUser"]["ID"],
             'identitee' => $numidentValide,
             'temps_abs' => microtime(true)
-
-
         ]);
         $_SESSION["InfosUser"]["IDent"] = $numidentValide;
     } catch (Exception $e) {

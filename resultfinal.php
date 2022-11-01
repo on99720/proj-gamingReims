@@ -57,7 +57,6 @@ NE PAS FERMER VOTRE NAVIGATEUR INTERNET, SOUS PEINE DE RECOMENCEMENT DU JEU. <br
                 <label for="lemail">Ton e-mail :  </label>
                 <input type="text" name="mail" placeholder="ton@email.com" size="30" required id="lemail" />
             <br />
-               <input type="hidden" name="score" id="score" value="{$_SESSION["InfosUser"]["Score"]}">
                <label for="lenivet">Ton niveau d'étude :</label>
                <select  name="nivetude" id="lenivet">
                    <option value="">Niveau scolaire</option>
