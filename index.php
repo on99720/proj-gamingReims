@@ -7,6 +7,7 @@ try {
 } catch (SessionException $e) {
     header("Location: ErreurPage.php");
     return;
+	
 }
 
 if(!isset($_SESSION["InfosUser"]["ID"])) {
